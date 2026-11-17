@@ -1,0 +1,14 @@
+<svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .house-path {
+      stroke: #1A1A2E;
+    }
+    @media (prefers-color-scheme: dark) {
+      .house-path {
+        stroke: #FFFFFF;
+      }
+    }
+  </style>
+  <path class="house-path" d="M14 3L4 12V24h6v-7h8v7h6V12L14 3z" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="14" cy="15" r="2.5" fill="#F5A623"/>
+</svg>

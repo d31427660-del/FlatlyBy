@@ -1,0 +1,70 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # 0. Intercept cPanel suspended page request and return 410 Gone for SEO
+    RewriteCond %{REQUEST_URI} ^/cgi-sys/suspendedpage.cgi [NC]
+    RewriteRule .* - [G,L]
+
+    # 0.5. Return 410 Gone for old deleted pages
+    RewriteRule ^index\.html$ / [R=301,L,NC]
+    RewriteRule ^for-landlords$ /listings/create [R=301,L,NC]
+    RewriteRule ^page-$ / [R=301,L,NC]
+
+    # City corrections
+    RewriteRule ^ive$ /ivye [R=301,L,NC]
+    RewriteRule ^city/ive$ /ivye [R=301,L,NC]
+    RewriteRule ^marina-gorka$ /maryina-gorka [R=301,L,NC]
+    RewriteRule ^city/marina-gorka$ /maryina-gorka [R=301,L,NC]
+
+    # Blog posts (redirecting old /guide/ path to new /blog/ path)
+    RewriteRule ^guide/chto-posmotret-v-minske-za-2-dnya$ /blog/chto-posmotret-v-minske-za-2-dnya [R=301,L,NC]
+    RewriteRule ^guide/braslavskie-ozera-polny-gayd$ /blog/braslavskie-ozera-polny-gayd [R=301,L,NC]
+    RewriteRule ^guide/ekoturizm-v-belarusi-kuda-poekhat$ /blog/ekoturizm-v-belarusi-kuda-poekhat [R=301,L,NC]
+    RewriteRule ^guide/neobychnye-usadby-belarusi-dlya-poseshcheniya$ /blog/neobychnye-usadby-belarusi-dlya-poseshcheniya [R=301,L,NC]
+
+    RewriteCond %{REQUEST_URI} ^/storage/?$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/apartment-detail\.html$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/about/?$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/city/?$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/guide(/|$) [NC]
+    RewriteRule .* - [G,L]
+
+    # 1. Redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+    # 2. Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 3. Redirect multiple slashes to single slash
+    RewriteCond %{THE_REQUEST} \s[^?]*//
+    RewriteRule ^.*$ %{REQUEST_URI} [R=301,L,NE]
+
+    # 4. Redirect trailing slash if not a directory (с одиночного / на без)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # 5. Strip trailing punctuation/garbage characters from URL
+    RewriteCond %{REQUEST_URI} ^(.*?)[.,;:\"'!\)\s]+$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
