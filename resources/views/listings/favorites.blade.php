@@ -597,7 +597,7 @@
 <div class="favorites-container">
   <div class="favorites-header">
     <a href="{{ route('home') }}" class="favorites-back-link">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <x-solar-alt-arrow-left-linear />
       Назад на главную
     </a>
     <h1 class="favorites-title">Избранные объявления</h1>
@@ -614,7 +614,7 @@
 
   <div id="favorites-empty-state" class="empty-state-section" style="display: {{ $listings->isEmpty() ? 'flex' : 'none' }};">
     <div class="empty-state-icon">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <x-solar-heart-linear />
     </div>
     <h2 class="empty-state-title">В избранном пока ничего нет</h2>
     <p class="empty-state-subtitle">Добавляйте понравившиеся объявления в избранное, нажимая на сердечко, чтобы они сохранились здесь.</p>

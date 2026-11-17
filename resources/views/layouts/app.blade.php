@@ -1941,7 +1941,7 @@ body.is-home-hero.scrolled .topnav .searchbar {
     <!-- Price Segment -->
     <div class="sb-seg sb-seg-price" style="position: relative;" onclick="toggleSearchPriceDropdown(event)" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleSearchPriceDropdown(event); }" role="button" tabindex="0" aria-label="Фильтр цены" aria-haspopup="true">
       <span class="sb-seg-label" title="Цена">
-        <svg viewBox="0 0 24 24" class="sb-icon"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+        <x-solar-tag-price-linear class="sb-icon" />
       </span>
       <span class="sb-seg-val" id="search-price-label">Любая</span>
       
@@ -1964,7 +1964,7 @@ body.is-home-hero.scrolled .topnav .searchbar {
     <!-- Guests Segment -->
     <div class="sb-seg sb-seg-guests" style="position: relative;" onclick="toggleSearchGuestsDropdown(event)" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleSearchGuestsDropdown(event); }" role="button" tabindex="0" aria-label="Количество гостей" aria-haspopup="true">
       <span class="sb-seg-label" title="Количество гостей">
-        <svg viewBox="0 0 24 24" class="sb-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <x-solar-user-linear class="sb-icon" />
       </span>
       <span class="sb-seg-val" id="search-guests-label">Любое</span>
       
@@ -1983,16 +1983,12 @@ body.is-home-hero.scrolled .topnav .searchbar {
 
     <!-- Filter Button inside Searchbar -->
     <button class="sb-filter-btn" type="button" aria-label="Фильтры" onclick="openSearchFilterModal(event)">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="4" y1="6" x2="20" y2="6"/>
-        <line x1="8" y1="12" x2="16" y2="12"/>
-        <line x1="11" y1="18" x2="13" y2="18"/>
-      </svg>
+      <x-solar-tuning-2-linear width="18" height="18" />
     </button>
 
     <!-- Search Button -->
     <button class="sb-btn" aria-label="Поиск" onclick="submitSearchbar(event)">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      <x-solar-magnifer-linear />
     </button>
   </div>
 
@@ -2000,14 +1996,14 @@ body.is-home-hero.scrolled .topnav .searchbar {
     <!-- "Связаться с нами" Dropdown Button -->
     <div class="nav-contact-selector" id="nav-contact-btn" onclick="toggleContactDropdown(event)">
       <button class="nav-contact-btn" aria-label="Связаться или показать контакты">
-        <svg class="contact-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <x-solar-phone-calling-linear class="contact-icon" width="16" height="16" style="margin-right: 2px;" />
         <span class="contact-text-full">Связаться с нами</span>
         <span class="contact-text-short">Контакты</span>
-        <svg class="chevron-icon" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round"><path d="m1 1 4 4 4-4"/></svg>
+        <x-solar-alt-arrow-down-linear class="chevron-icon" width="10" height="10" />
       </button>
       <div class="nav-contact-dropdown" id="nav-contact-dropdown">
         <a href="tel:+375296045015" class="contact-dropdown-item phone-item">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <x-solar-phone-calling-linear width="16" height="16" />
           <span>+375 (29) 604-50-15</span>
         </a>
         <div class="contact-dropdown-divider"></div>
@@ -2025,15 +2021,12 @@ body.is-home-hero.scrolled .topnav .searchbar {
     </div>
 
     <a href="{{ route('listings.favorites') }}" class="nav-fav-link" id="header-fav-link" title="Избранное" aria-label="Избранное">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <x-solar-heart-linear />
       <span class="fav-counter" id="header-fav-counter" style="display: none;">0</span>
     </a>
 
     <a href="{{ route('listings.create') }}" class="nav-create-btn" aria-label="Разместить объявление о сдаче жилья">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="12" y1="5" x2="12" y2="19"></line>
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-      </svg>
+      <x-solar-add-circle-linear />
       <span class="create-text-full">Подать за 0 <span class="header-submit-currency-symbol">Б̶</span></span>
       <span class="create-text-short">Подать</span>
     </a>
@@ -2043,7 +2036,7 @@ body.is-home-hero.scrolled .topnav .searchbar {
       <button class="currency-btn">
         <span class="currency-label">Валюта:</span>
         <span id="active-currency-symbol">Б̶</span>
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="#1A1A2E" stroke-width="1.5" stroke-linecap="round"><path d="m1 1 4 4 4-4"/></svg>
+        <x-solar-alt-arrow-down-linear class="chevron-icon" width="10" height="10" />
       </button>
       <div class="currency-dropdown" id="currency-dropdown">
         <div class="dropdown-item" data-code="BYN" onclick="selectCurrency('BYN', 'Б̶', event)">
@@ -2066,11 +2059,9 @@ body.is-home-hero.scrolled .topnav .searchbar {
     </div>
 
     <div class="nav-user" id="nav-user-btn" onclick="toggleDropdown(event)" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleDropdown(event); }" role="button" tabindex="0" aria-label="Меню пользователя" aria-haspopup="true" aria-expanded="false">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
+      <x-solar-hamburger-menu-linear width="18" height="18" />
       <div class="avatar">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <x-solar-user-linear />
       </div>
       
       <!-- Floating Dropdown Menu -->
@@ -3045,7 +3036,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Scroll to Top Button -->
 <button id="scrollToTop" class="scroll-to-top-btn" aria-label="Наверх">
-  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  <x-solar-alt-arrow-up-linear />
 </button>
 
 <script>
@@ -3079,9 +3070,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Floating Support Button -->
 <button class="floating-support-btn" onclick="openSupportModal()" aria-label="Поддержка">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
-  </svg>
+  <x-solar-chat-round-line-linear width="24" height="24" />
   <span>Поддержка</span>
 </button>
 
@@ -3110,7 +3099,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <label class="support-form-label">Имя <span class="required">*</span></label>
         <div class="support-input-wrapper">
           <span class="support-input-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <x-solar-user-linear width="18" height="18" />
           </span>
           <input type="text" name="name" id="support-name" class="support-input-text" placeholder="Ваше имя" value="{{ $currentUser ? $currentUser->name : '' }}" required>
         </div>
@@ -3124,7 +3113,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <!-- Телефон -->
           <div class="support-field-wrapper">
             <span class="support-input-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <x-solar-phone-calling-linear width="18" height="18" />
             </span>
             <input type="text" name="phone" id="support-phone" class="support-input-text" placeholder="Телефон *" value="{{ $currentUser ? $currentUser->phone : '' }}" required>
           </div>
@@ -3132,7 +3121,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <!-- Telegram -->
           <div class="support-field-wrapper">
             <span class="support-input-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <x-solar-plain-linear width="18" height="18" />
             </span>
             <input type="text" name="telegram" id="support-telegram" class="support-input-text" placeholder="Telegram (@username)" value="{{ $currentUser ? $currentUser->telegram : '' }}">
           </div>
@@ -3140,7 +3129,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <!-- Viber -->
           <div class="support-field-wrapper">
             <span class="support-input-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              <x-solar-chat-dots-linear width="18" height="18" />
             </span>
             <input type="text" name="viber" id="support-viber" class="support-input-text" placeholder="Viber" value="{{ $currentUser ? $currentUser->viber : '' }}">
           </div>
@@ -3148,7 +3137,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <!-- WhatsApp -->
           <div class="support-field-wrapper">
             <span class="support-input-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <x-solar-dialog-linear width="18" height="18" />
             </span>
             <input type="text" name="whatsapp" id="support-whatsapp" class="support-input-text" placeholder="WhatsApp" value="{{ $currentUser && isset($currentUser->whatsapp) ? $currentUser->whatsapp : '' }}">
           </div>

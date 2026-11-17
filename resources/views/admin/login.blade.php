@@ -354,9 +354,9 @@
           <label class="form-label" for="password">Пароль доступа</label>
           <div class="input-wrapper">
             <input type="password" id="password" class="input-field" placeholder="Введите пароль" required autocomplete="current-password">
-            <svg class="input-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <x-solar-lock-keyhole-linear class="input-icon" />
             <button type="button" class="toggle-pwd" id="toggle-pwd-btn" title="Показать/скрыть пароль">
-              <svg id="eye-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <x-solar-eye-linear id="eye-icon" width="18" height="18" />
             </button>
           </div>
         </div>
@@ -364,12 +364,12 @@
         <button type="submit" id="btn-submit" class="btn-submit">
           <svg class="spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" fill="none"/><path d="M12 2a10 10 0 0 1 10 10" stroke="white"/></svg>
           <span id="btn-text">Войти в панель</span>
-          <svg id="arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <x-solar-arrow-right-linear id="arrow-icon" />
         </button>
       </form>
 
       <a href="/" class="back-home">
-        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <x-solar-arrow-left-linear width="16" height="16" />
         Вернуться на сайт
       </a>
     </div>

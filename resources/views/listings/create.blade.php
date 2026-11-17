@@ -344,22 +344,12 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
       <div class="fc-body">
         <div class="fc-section">
           <div class="section-label">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <x-solar-home-2-linear width="18" height="18" />
             Категория недвижимости
           </div>
           <div class="type-grid">
             <div class="type-tile sel" data-type="apartment" onclick="selectObjectType('apartment')">
-              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
-                <line x1="9" y1="6" x2="9" y2="6.01"/>
-                <line x1="15" y1="6" x2="15" y2="6.01"/>
-                <line x1="9" y1="10" x2="9" y2="10.01"/>
-                <line x1="15" y1="10" x2="15" y2="10.01"/>
-                <line x1="9" y1="14" x2="9" y2="14.01"/>
-                <line x1="15" y1="14" x2="15" y2="14.01"/>
-                <line x1="9" y1="18" x2="9" y2="18.01"/>
-                <line x1="15" y1="18" x2="15" y2="18.01"/>
-              </svg>
+              <x-solar-buildings-2-linear width="48" height="48" />
               <div>
                 <div class="tt-name">Квартира</div>
                 <div class="tt-sub">Посуточная аренда квартир</div>
@@ -368,10 +358,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 
             
             <div class="type-tile" data-type="cottage" onclick="selectObjectType('cottage')">
-              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
+              <x-solar-home-2-linear width="48" height="48" />
               <div>
                 <div class="tt-name">Коттедж</div>
                 <div class="tt-sub">Дома, коттеджи, таунхаусы</div>
@@ -386,7 +373,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <p class="submit-note">Шаг 1 из 7 — Выбор типа объекта</p>
         <button class="btn-submit" onclick="nextStep()">
           Далее — основное
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -402,7 +389,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <!-- Заголовок -->
         <div class="fc-section">
           <div class="section-label">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <x-solar-document-text-linear width="18" height="18" />
             Заголовок объявления <span class="req">*</span>
           </div>
           <div class="field">
@@ -415,7 +402,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           <!-- Город -->
           <div class="fc-section">
             <div class="section-label">
-              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <x-solar-map-point-linear width="18" height="18" />
               Укажите город <span class="req">*</span>
             </div>
             <div class="field">
@@ -440,7 +427,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           <!-- Адрес -->
           <div class="fc-section">
             <div class="section-label">
-              <svg viewBox="0 0 24 24"><path d="M3 9L12 2l9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+              <x-solar-home-2-linear width="18" height="18" />
               Адрес <span class="req">*</span>
             </div>
             <div class="field">
@@ -528,7 +515,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <div id="cottage-address-section" style="display:none;">
           <div class="fc-section">
             <div class="section-label">
-              <svg viewBox="0 0 24 24"><path d="M3 9L12 2l9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+              <x-solar-home-2-linear width="18" height="18" />
               Адрес <span class="req">*</span>
             </div>
             
@@ -564,7 +551,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <!-- Карта -->
         <div class="fc-section">
           <div class="section-label">
-            <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <x-solar-map-linear width="18" height="18" />
             Карта <span class="req">*</span>
           </div>
           <div class="hint" style="margin-bottom:10px;">Это расположение гости увидят на сайте. Пожалуйста перетащите маркер в точное место</div>
@@ -572,7 +559,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
             <div id="listing-map" style="width:100%;height:100%;"></div>
             <div id="map-placeholder" style="position:absolute;top:0;left:0;width:100%;height:100%;background:#e8e0d8;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--gray-text);z-index:5;">
               <div>
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 8px;"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                <x-solar-map-linear width="32" height="32" style="display:block;margin:0 auto 8px;" />
                 <span style="font-size:13px;">Карта загрузится после ввода адреса</span>
               </div>
             </div>
@@ -582,7 +569,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <!-- Параметры объекта / квартиры -->
         <div class="fc-section">
           <div class="section-label" id="params-section-title">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <x-solar-tuning-2-linear width="18" height="18" />
             Параметры квартиры <span class="req">*</span>
           </div>
           
@@ -672,7 +659,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <!-- Спальные места -->
         <div class="fc-section">
           <div class="section-label">
-            <svg viewBox="0 0 24 24"><path d="M3 9V7a1 1 0 011-1h16a1 1 0 011 1v2M3 9h18M3 9v8a1 1 0 001 1h1M21 9v8a1 1 0 01-1 1h-1M7 17v2M17 17v2M7 13h10"/></svg>
+            <x-solar-bed-linear width="18" height="18" />
             Спальные места
           </div>
           <div class="field-row">
@@ -714,7 +701,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <!-- Описание -->
         <div class="fc-section">
           <div class="section-label" id="desc-section-title">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <x-solar-document-text-linear width="18" height="18" />
             Описание квартиры
           </div>
           <div class="field">
@@ -726,22 +713,22 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <!-- Фото -->
         <div class="fc-section">
           <div class="section-label">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <x-solar-gallery-linear width="18" height="18" />
             Загрузка фотографий <span class="req">*</span>
           </div>
           <label class="upload-zone" for="photo-upload" id="upload-zone">
             <input type="file" id="photo-upload" multiple accept="image/*" onchange="handlePhotos(this)">
-            <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
+            <x-solar-cloud-upload-linear width="40" height="40" />
             <p>Перетащите фото или нажмите для выбора</p>
             <span>JPG, PNG, WEBP (не более 15 файлов, до 5 МБ каждый)</span>
           </label>
           <div class="photo-quality-tip">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <x-solar-info-circle-linear width="16" height="16" />
             <span><b>Совет по фото:</b> Первое фото станет главной обложкой. Вы можете перетаскивать фото или нажать «Сделать обложкой». Объявления с 5+ качественными фото получают в 3 раза больше откликов.</span>
           </div>
           <div class="photo-previews" id="photo-previews">
             <div class="photo-thumb-add" onclick="document.getElementById('photo-upload').click()">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <x-solar-add-circle-linear width="20" height="20" />
             </div>
           </div>
         </div>
@@ -751,7 +738,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <button class="btn-draft" onclick="prevStep()">← Назад</button>
         <button class="btn-submit" onclick="nextStep()">
           Далее — характеристики
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -886,7 +873,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <button class="btn-draft" onclick="prevStep()">← Назад</button>
         <button class="btn-submit" onclick="nextStep()">
           Далее — удобства
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -1004,7 +991,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <button class="btn-draft" onclick="prevStep()">← Назад</button>
         <button class="btn-submit" onclick="nextStep()">
           Далее
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -1036,7 +1023,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <button class="btn-draft" onclick="prevStep()">← Назад</button>
         <button class="btn-submit" onclick="nextStep()">
           Далее — условия
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -1093,7 +1080,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <button class="btn-draft" onclick="prevStep()">← Назад</button>
         <button class="btn-submit" onclick="nextStep()">
           Далее — оплата
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -1108,7 +1095,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 
         <div class="fc-section">
           <div class="section-label">
-            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <x-solar-tag-price-linear width="18" height="18" />
             Цена за сутки <span class="req">*</span>
           </div>
           <div class="price-input-wrap">
@@ -1144,7 +1131,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
         <button class="btn-draft" onclick="prevStep()">← Назад</button>
         <button class="btn-submit" onclick="nextStep()">
           Далее — контакты
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          <x-solar-alt-arrow-right-linear width="16" height="16" />
         </button>
       </div>
     </div>
@@ -1208,7 +1195,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           <button class="btn-draft" onclick="prevStep()">← Назад</button>
         </div>
         <button class="btn-submit" onclick="submitListing()" style="font-size:16px;padding:14px 32px;">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <x-solar-check-circle-linear width="18" height="18" />
           Опубликовать
         </button>
       </div>
@@ -1221,7 +1208,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 
     <div class="sidebar-card">
       <div class="sc-title">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <x-solar-question-circle-linear width="18" height="18" />
         Советы
       </div>
       <p class="sc-tip" id="sidebar-tip">Выберите правильную категорию — гости ищут «квартиру» и «коттедж» по-разному.</p>
@@ -1229,7 +1216,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 
     <div class="sidebar-card">
       <div class="sc-title">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <x-solar-gallery-linear width="18" height="18" />
         Предпросмотр
       </div>
       <div class="preview-mini">
@@ -1239,7 +1226,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           <div class="pm-sub">Минск · Частный арендодатель</div>
           <div class="pm-price"><span id="preview-price">65</span> Б̶ <span>/ ночь</span></div>
           <div class="pm-phone">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.1 1.2 2 2 0 012.08 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            <x-solar-phone-calling-linear width="16" height="16" />
             <span id="preview-phone">+375 XX XXX-XX-XX</span>
           </div>
         </div>
@@ -1248,7 +1235,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 
     <div class="sidebar-card">
       <div class="sc-title">
-        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <x-solar-check-circle-linear width="18" height="18" />
         Бесплатно
       </div>
       <p class="sc-tip">Размещение объявления — <strong>бесплатно</strong>. Гости звонят вам напрямую.</p>
@@ -1262,7 +1249,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 <div class="success-overlay" id="success-overlay" onclick="closeSuccess(event)">
   <div class="success-card">
     <div class="success-icon">
-      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      <x-solar-check-circle-linear width="48" height="48" />
     </div>
     <h2 id="success-title">Объявление создано!</h2>
     <p id="success-text">Ваше объявление успешно создано! Чтобы оно появилось в поиске, перейдите в личный кабинет и оплатите тариф.</p>
@@ -1436,8 +1423,8 @@ function adjustFormFieldsForType(type) {
   const descTitle = document.getElementById('desc-section-title');
   if (descTitle) {
     descTitle.innerHTML = isCottage 
-      ? '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Описание объекта'
-      : '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Описание квартиры';
+      ? '<svg width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M3 10c0-3.771 0-5.657 1.172-6.828C5.343 2 7.229 2 11 2h2c3.771 0 5.657 0 6.828 1.172C21 4.343 21 6.229 21 10v4c0 3.771 0 5.657-1.172 6.828C18.657 22 16.771 22 13 22h-2c-3.771 0-5.657 0-6.828-1.172C3 19.657 3 17.771 3 14zm5-2h8m-8 4h8m-8 4h5"/></svg> Описание объекта'
+      : '<svg width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M3 10c0-3.771 0-5.657 1.172-6.828C5.343 2 7.229 2 11 2h2c3.771 0 5.657 0 6.828 1.172C21 4.343 21 6.229 21 10v4c0 3.771 0 5.657-1.172 6.828C18.657 22 16.771 22 13 22h-2c-3.771 0-5.657 0-6.828-1.172C3 19.657 3 17.771 3 14zm5-2h8m-8 4h8m-8 4h5"/></svg> Описание квартиры';
   }
 
   const descInput = document.getElementById('desc-input');
@@ -1579,7 +1566,7 @@ function markFieldError(el, msg) {
         el.insertAdjacentElement('afterend', errEl);
       }
     }
-    errEl.innerHTML = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ${msg}`;
+    errEl.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 7v6m0 4.5v-.5"/></g></svg> ${msg}`;
     errEl.style.display = 'flex';
   }
 
@@ -2177,7 +2164,7 @@ function prepareEditMode(id) {
   // Change final wizard button label
   const finalSubmitBtn = document.querySelector('#step_contacts .btn-submit');
   if (finalSubmitBtn) {
-    finalSubmitBtn.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Сохранить изменения`;
+    finalSubmitBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="m9 12l2 2l4-4m6 2a9 9 0 1 1-18 0a9 9 0 0 1 18 0"/></svg> Сохранить изменения`;
   }
 }
 
@@ -2427,7 +2414,7 @@ function renderPhotoThumbnails() {
       <img src="${photoPath}">
       ${coverBadgeHtml}
       <div class="photo-remove" onclick="removePhotoByIndex(${index}, event)" title="Удалить фото">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m18 6l-12 12M6 6l12 12"/></svg>
       </div>
       ${makeCoverBtnHtml}
     `;

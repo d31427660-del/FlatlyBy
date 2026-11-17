@@ -251,13 +251,13 @@
     <!-- Production Feedback Alerts -->
     @if(session('error'))
       <div style="background:#FFF0F2; border:1px solid #FFCCD3; color:#D9383A; border-radius:10px; padding:12px 14px; font-size:13px; font-weight:600; margin-bottom:20px; display:flex; align-items:center; gap:8px; line-height:1.4;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <x-solar-danger-circle-linear width="16" height="16" style="flex-shrink:0;" />
         <span>{{ session('error') }}</span>
       </div>
     @endif
     @if(session('success'))
       <div style="background:#EAF3DE; border:1px solid #C2E299; color:#3B6D11; border-radius:10px; padding:12px 14px; font-size:13px; font-weight:600; margin-bottom:20px; display:flex; align-items:center; gap:8px; line-height:1.4;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+        <x-solar-check-circle-linear width="16" height="16" style="flex-shrink:0;" />
         <span>{{ session('success') }}</span>
       </div>
     @endif

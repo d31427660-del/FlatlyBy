@@ -3489,7 +3489,7 @@
         <!-- Преимущества района (если заданы) -->
         @if(isset($landingPage['advantages']))
           <h3 class="seo-subtitle" style="display: flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--slate-900); margin-bottom: 20px;">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--amber-dark);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <x-solar-star-bold width="22" height="22" style="color: var(--amber-dark);" />
             Главные преимущества района
           </h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px;">
@@ -3505,7 +3505,7 @@
         <!-- Таблица цен (если задана) -->
         @if(isset($landingPage['price_table']))
           <h3 class="seo-subtitle" style="display: flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--slate-900); margin-bottom: 20px;">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--amber-dark);"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <x-solar-tag-price-linear width="22" height="22" style="color: var(--amber-dark);" />
             Средняя стоимость аренды жилья посуточно
           </h3>
           <div style="overflow-x: auto; background: var(--white); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.01);">
@@ -3531,7 +3531,7 @@
         <!-- Секция Советов для НЧ-страниц -->
         @if(isset($landingPage['tips']) && is_array($landingPage['tips']))
           <h3 class="seo-subtitle" style="display: flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--slate-900); margin-bottom: 20px;">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--amber-dark);"><polyline points="20 6 9 17 4 12"/></svg>
+            <x-solar-check-circle-linear width="22" height="22" style="color: var(--amber-dark);" />
             Полезные советы при выборе и бронировании
           </h3>
           
@@ -3552,7 +3552,7 @@
         <!-- Секция FAQ для НЧ-страниц -->
         @if(isset($landingPage['faq']) && is_array($landingPage['faq']))
           <h3 class="seo-subtitle" style="display: flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--slate-900); margin-bottom: 20px;">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--amber-dark);"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <x-solar-question-circle-linear width="22" height="22" style="color: var(--amber-dark);" />
             Часто задаваемые вопросы (FAQ)
           </h3>
 
@@ -3561,7 +3561,7 @@
               <div class="faq-item" style="border: 1px solid var(--border); border-radius: 12px; background: var(--white); overflow: hidden; transition: all 0.2s;">
                 <button class="faq-trigger" onclick="toggleFaq(this)" style="width: 100%; background: none; border: none; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; text-align: left; cursor: pointer; outline: none;">
                   <span class="faq-question" style="font-size: 15px; font-weight: 700; color: var(--slate-900);">{{ $item['question'] }}</span>
-                  <svg class="faq-icon" viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--slate-900); stroke-width: 2.5; fill: none; transition: transform 0.25s; flex-shrink: 0; margin-left: 12px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <x-solar-alt-arrow-down-linear class="faq-icon" style="width: 20px; height: 20px; color: var(--slate-900); transition: transform 0.25s; flex-shrink: 0; margin-left: 12px;" />
                 </button>
                 <div class="faq-panel" style="max-height: 0; overflow: hidden; transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1);">
                   <div class="faq-content" style="padding: 0 24px 20px; font-size: 14px; color: var(--gray-text); line-height: 1.6; text-align: left;">
@@ -3582,7 +3582,7 @@
         <div style="text-align: center; margin-top: 36px; margin-bottom: 24px;">
           <a href="{{ $catalogAllLink }}" class="primary-action-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px 32px; font-size: 15px; font-weight: 700; width: auto; max-width: 340px; margin: 0 auto; box-shadow: 0 4px 14px rgba(245, 166, 35, 0.25);">
             {{ $catalogAllText }}
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <x-solar-arrow-right-linear width="16" height="16" />
           </a>
         </div>
       @else
@@ -3598,9 +3598,7 @@
       <div class="seo-spoiler-container">
         <button class="seo-spoiler-trigger" onclick="toggleSeoSpoiler(event)">
           <span>Подробнее об аренде {{ $inCitySeo }}</span>
-          <svg class="seo-spoiler-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
+          <x-solar-alt-arrow-down-linear class="seo-spoiler-icon" width="16" height="16" />
         </button>
         
         <div class="seo-spoiler-content" id="seo-spoiler-content">
@@ -3617,7 +3615,7 @@
 
       <!-- Section: Benefits -->
       <h3 class="seo-subtitle">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <x-solar-layers-linear width="22" height="22" />
         Преимущества посуточной аренды на Flatly.by
       </h3>
       <p style="font-size: 14.5px; line-height: 1.6; color: var(--gray-text); margin-bottom: 24px;">
@@ -3628,7 +3626,7 @@
         <!-- Benefit 1 -->
         <div class="benefit-card">
           <div class="benefit-icon-wrapper">
-            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <x-solar-chat-round-line-linear width="24" height="24" />
           </div>
           <div class="benefit-content">
             <h4 class="benefit-title">Прямое общение с хозяевами</h4>
@@ -3639,7 +3637,7 @@
         <!-- Benefit 2 -->
         <div class="benefit-card">
           <div class="benefit-icon-wrapper">
-            <svg viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+            <x-solar-map-linear width="24" height="24" />
           </div>
           <div class="benefit-content">
             <h4 class="benefit-title">Интерактивный поиск на карте</h4>
@@ -3650,7 +3648,7 @@
         <!-- Benefit 3 -->
         <div class="benefit-card">
           <div class="benefit-icon-wrapper">
-            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <x-solar-camera-linear width="24" height="24" />
           </div>
           <div class="benefit-content">
             <h4 class="benefit-title">Актуальные цены и фото</h4>
@@ -3661,7 +3659,7 @@
         <!-- Benefit 4 -->
         <div class="benefit-card">
           <div class="benefit-icon-wrapper">
-            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <x-solar-wallet-linear width="24" height="24" />
           </div>
           <div class="benefit-content">
             <h4 class="benefit-title">Экономия до 20%</h4>
@@ -3672,7 +3670,7 @@
 
       <!-- Section: Rates Table -->
       <h3 class="seo-subtitle">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <x-solar-chart-2-linear width="22" height="22" />
         {{ $seoRatesTitle }}
       </h3>
       
@@ -3881,7 +3879,7 @@
 
         @if(count($visibleTags) > 0)
           <h3 class="seo-subtitle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            <x-solar-link-minimalistic-linear width="20" height="20" />
             Быстрый выбор жилья {{ $inCityNameSeo }}
           </h3>
           
@@ -3909,7 +3907,7 @@
             ];
           @endphp
           <h3 class="seo-subtitle" style="margin-top: 24px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+            <x-solar-map-linear width="20" height="20" />
             Квартиры посуточно по районам Минска
           </h3>
           <div class="seo-tag-cloud" style="margin-bottom: 24px;">
@@ -3972,7 +3970,7 @@
           }
         @endphp
         <h3 class="seo-subtitle">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          <x-solar-link-minimalistic-linear width="20" height="20" />
           {{ $cityCloudTitle }}
         </h3>
         
@@ -3985,7 +3983,7 @@
 
       <!-- Section: How it Works Timeline -->
       <h3 class="seo-subtitle">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <x-solar-clock-circle-linear width="22" height="22" />
         Как это работает: 3 шага до заселения
       </h3>
       
@@ -4033,10 +4031,7 @@
       <!-- Floating Search Area Button -->
       <div id="map-search-area-box" class="map-search-area-box" style="display: none;">
         <button id="map-search-area-btn" class="map-search-area-btn" onclick="triggerAreaSearch(event)">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+          <x-solar-magnifer-linear width="15" height="15" />
           <span>Искать в этой области</span>
         </button>
         <button id="map-reset-area-btn" class="map-reset-area-btn" onclick="resetAreaSearch(event)" title="Сбросить ограничение по карте" style="display: none;">
@@ -4071,13 +4066,7 @@
 
       <!-- Geolocation Button -->
       <button class="map-geo-btn" onclick="triggerMapGeolocation(event)" title="Определить мое местоположение" aria-label="Определить мое местоположение">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="22" y1="12" x2="18" y2="12"></line>
-          <line x1="6" y1="12" x2="2" y2="12"></line>
-          <line x1="12" y1="6" x2="12" y2="2"></line>
-          <line x1="12" y1="22" x2="12" y2="18"></line>
-        </svg>
+        <x-solar-gps-linear width="20" height="20" />
       </button>
 
       <!-- Floating Map Card Preview -->
@@ -4150,8 +4139,8 @@
 <!-- Floating Map/List Toggle Button for Mobile -->
 <button class="mobile-map-toggle-btn" id="mobile-map-toggle" onclick="toggleMobileMap()">
   <span class="btn-text">Карта</span>
-  <svg class="map-icon" viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="var(--white)"/><circle cx="12" cy="9" r="2.5" fill="var(--slate-900)"/></svg>
-  <svg class="list-icon" viewBox="0 0 24 24" width="16" height="16" style="display:none;"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+  <x-solar-map-point-linear class="map-icon" width="16" height="16" />
+  <x-solar-list-linear class="list-icon" width="16" height="16" style="display:none;" />
 </button>
 
 <!-- CITY SELECTION MODAL -->
@@ -4169,7 +4158,7 @@
         <input type="text" id="city-modal-search-input" placeholder="Поиск города..." aria-label="Поиск города в списке" 
                style="width: 100%; height: 42px; border: 1px solid var(--border); border-radius: 8px; padding: 0 12px 0 36px; font-size: 14px; box-sizing: border-box; background: var(--slate-50);"
                oninput="filterModalCities()">
-        <svg viewBox="0 0 24 24" style="position: absolute; left: 12px; top: 13px; width: 16px; height: 16px; fill: none; stroke: var(--gray-text); stroke-width: 2.5;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <x-solar-magnifer-linear style="position: absolute; left: 12px; top: 13px; width: 16px; height: 16px; color: var(--gray-text);" />
       </div>
       
       <!-- Regional Centers -->
@@ -6121,10 +6110,7 @@ function showMapPreview(id) {
     previewFake.style.display = 'flex';
     previewFake.style.background = apt.fakeBg || 'linear-gradient(140deg, #2C3E50, #3D5A6B)';
     previewFake.innerHTML = apt.fakeEmoji ? `<span style="font-size: 40px;">${apt.fakeEmoji}</span>` : `
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-      </svg>
+      <svg width="40" height="40" viewBox="0 0 24 24" style="opacity: 0.7;"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M19.78 12.012a2 2 0 0 1 1.767 1.507c.56 2.502.84 3.753.197 4.704c-.644.952-1.928.952-4.496.952h-2.496v-4.5a2.748 2.748 0 1 0-5.496 0v4.5H6.76c-2.568 0-3.852 0-4.496-.952c-.643-.951-.363-2.202.197-4.704a2 2 0 0 1 1.767-1.507l5.632-3.13a4.28 4.28 0 0 1 4.29 0z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M19 8.5V4.75a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75V6"/></svg>
     `;
   }
   
@@ -7810,7 +7796,7 @@ function renderPaginationControls(totalPages) {
   const prevUrl = currentPage === 1 ? '#' : getPageUrl(currentPage - 1);
   const prevOnClick = currentPage === 1 ? 'onclick="event.preventDefault()"' : `onclick="changePage(event, ${currentPage - 1})"`;
   html += `<a href="${prevUrl}" class="page-btn ${prevDisabled}" ${prevOnClick} aria-label="Предыдущая страница">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--slate-900)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24"><path fill="none" stroke="var(--slate-900)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 5l-6 7l6 7"/></svg>
   </a>`;
   
   // Кнопки страниц с усечением (truncation)
@@ -7848,7 +7834,7 @@ function renderPaginationControls(totalPages) {
   const nextUrl = currentPage === totalPages ? '#' : getPageUrl(currentPage + 1);
   const nextOnClick = currentPage === totalPages ? 'onclick="event.preventDefault()"' : `onclick="changePage(event, ${currentPage + 1})"`;
   html += `<a href="${nextUrl}" class="page-btn ${nextDisabled}" ${nextOnClick} aria-label="Следующая страница">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--slate-900)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24"><path fill="none" stroke="var(--slate-900)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5l6 7l-6 7"/></svg>
   </a>`;
   
   pagContainer.innerHTML = html;

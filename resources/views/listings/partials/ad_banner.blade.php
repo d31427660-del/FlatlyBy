@@ -214,11 +214,7 @@
 <a href="https://t.me/byejey1" target="_blank" class="ad-banner" data-page="{{ $pageNumber ?? 1 }}" style="{{ isset($visibleOnLoad) && !$visibleOnLoad ? 'display: none !important;' : '' }}">
   <div class="ad-banner-top">
     <div class="ad-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-      </svg>
+      <x-solar-volume-loud-linear />
       Реклама
     </div>
   </div>
@@ -227,10 +223,7 @@
     <div class="ad-banner-title">Здесь может быть <br><span>ваша реклама</span></div>
     <div class="ad-banner-btn">
       Разместить сейчас
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="7" y1="17" x2="17" y2="7"/>
-        <polyline points="7 7 17 7 17 17"/>
-      </svg>
+      <x-solar-arrow-right-up-linear />
     </div>
   </div>
   
@@ -238,44 +231,28 @@
     <div class="ad-features-grid">
       <div class="ad-feature-item">
         <div class="ad-feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <circle cx="12" cy="12" r="6"/>
-            <circle cx="12" cy="12" r="2"/>
-          </svg>
+          <x-solar-target-linear />
         </div>
         <div class="ad-feature-text">Привлекайте внимание</div>
       </div>
       
       <div class="ad-feature-item">
         <div class="ad-feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"/>
-            <line x1="12" y1="20" x2="12" y2="4"/>
-            <line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
+          <x-solar-graph-up-linear />
         </div>
         <div class="ad-feature-text">Увеличивайте продажи</div>
       </div>
       
       <div class="ad-feature-item">
         <div class="ad-feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 11 11 13 15 9"/>
-          </svg>
+          <x-solar-shield-check-linear />
         </div>
         <div class="ad-feature-text">Надёжный партнёр</div>
       </div>
       
       <div class="ad-feature-item">
         <div class="ad-feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
+          <x-solar-users-group-two-rounded-linear />
         </div>
         <div class="ad-feature-text">Больше клиентов — больше возможностей</div>
       </div>

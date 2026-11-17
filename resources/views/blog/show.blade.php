@@ -334,7 +334,7 @@
         }
       @endphp
       <span style="display:inline-flex; align-items:center; gap: 4px;">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <x-solar-eye-linear width="14" height="14" style="opacity:0.6;" />
         {{ $post->views }} {{ $viewsSuffix }}
       </span>
       <span class="article-source-badge {{ empty($post->source_url) ? 'own' : '' }}">
@@ -385,10 +385,7 @@
 
   <!-- Source credit block -->
   <div class="article-source-credit">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-    </svg>
+    <x-solar-book-linear width="24" height="24" />
     <div>
       @if(!empty($post->source_url))
         <p>Материал заимствован из источника <b>{{ $post->source_name }}</b> для ознакомительных целей. Оригинал статьи вы можете прочитать на первоисточнике по ссылке: <a href="{{ $post->source_url }}" target="_blank" rel="noopener noreferrer">{{ $post->source_name }}</a>.</p>

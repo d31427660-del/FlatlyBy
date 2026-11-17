@@ -177,7 +177,7 @@
     <!-- 1. Требования к объявлениям -->
     <section class="rules-card">
       <h2 class="rules-section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <x-solar-document-text-linear width="24" height="24" />
         1. Основные требования к объявлениям
       </h2>
       <p>Каждое объявление на Flatly.by должно содержать исключительно достоверную и актуальную информацию о сдаваемом объекте:</p>
@@ -192,7 +192,7 @@
     <!-- 2. Запрещенные действия -->
     <section class="rules-card">
       <h2 class="rules-section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <x-solar-danger-triangle-linear width="24" height="24" />
         2. Запрещенные действия и спам
       </h2>
       <p>Для поддержания честной конкуренции и удобства поиска на платформе строго запрещается:</p>
@@ -216,7 +216,7 @@
     <!-- 3. Обязанности собственника -->
     <section class="rules-card">
       <h2 class="rules-section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <x-solar-shield-user-linear width="24" height="24" />
         3. Ответственность и требования закона
       </h2>
       <p>Арендодатели на Flatly.by обязаны соблюдать действующее законодательство Республики Беларусь:</p>

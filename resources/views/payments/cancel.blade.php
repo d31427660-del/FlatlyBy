@@ -156,7 +156,7 @@
 <div class="cancel-page-container">
     <div class="glass-cancel-card">
         <div class="cancel-icon-ring">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <x-solar-close-circle-linear />
         </div>
 
         <h1 class="cancel-title">Оплата не завершена</h1>

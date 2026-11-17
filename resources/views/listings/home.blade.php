@@ -1155,7 +1155,7 @@
       <h2 class="section-title" style="margin: 0; color: #FFFFFF;">Рекомендуемые предложения</h2>
       <p class="section-subtitle vip-subtitle-desktop" style="margin-top: 4px; color: #94A3B8;">Выбранные объявления с премиум-размещением на главной странице</p>
       <button onclick="openVipHowtoModal()" class="vip-howto-btn vip-howto-mobile" style="margin-top: 10px; background: rgba(245, 166, 35, 0.15); border: 1px solid rgba(245, 166, 35, 0.4); color: #F5A623; border-radius: 20px; padding: 8px 16px; font-size: 13px; font-weight: 700; cursor: pointer; align-items: center; gap: 6px; transition: all 0.2s ease;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <x-solar-question-circle-linear width="16" height="16" />
         Как сюда попасть?
       </button>
     </div>
@@ -1163,14 +1163,14 @@
     <!-- Carousel Navigation Arrows & How-to Button -->
     <div class="vip-carousel-nav" style="display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-bottom: 4px;">
       <button onclick="openVipHowtoModal()" class="vip-howto-btn vip-howto-desktop" style="background: rgba(245, 166, 35, 0.15); border: 1px solid rgba(245, 166, 35, 0.4); color: #F5A623; border-radius: 20px; padding: 8px 16px; font-size: 13px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <x-solar-question-circle-linear width="16" height="16" />
         Как сюда попасть?
       </button>
       <button class="vip-arrow-btn prev" onclick="scrollVipCarousel(-1)" aria-label="Предыдущие объявления">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="15 18 9 12 15 6"/></svg>
+        <x-solar-alt-arrow-left-linear width="20" height="20" />
       </button>
       <button class="vip-arrow-btn next" onclick="scrollVipCarousel(1)" aria-label="Следующие объявления">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="9 18 15 12 9 6"/></svg>
+        <x-solar-alt-arrow-right-linear width="20" height="20" />
       </button>
     </div>
   </div>
@@ -1371,7 +1371,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Как забронировать жилье на Flatly.by?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1384,7 +1384,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Правда ли, что размещение объявлений бесплатно?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1397,7 +1397,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Какая комиссия сервиса для гостей и хозяев?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1410,7 +1410,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Как связаться с владельцем выбранного жилья?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1423,7 +1423,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Что делать, если владелец не отвечает на звонки или сообщения?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1436,7 +1436,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Какие документы необходимы при заселении?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1449,7 +1449,7 @@
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
           <span class="faq-question">Что такое верификация по УНП для арендодателей?</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <x-solar-alt-arrow-down-linear class="faq-icon" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">

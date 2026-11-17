@@ -295,10 +295,10 @@
       </div>
       @if(count($cardPhotos) > 1)
         <button class="carousel-arrow prev" onclick="prevCardPhoto(event, this)" aria-label="Предыдущее фото">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <x-solar-alt-arrow-left-linear />
         </button>
         <button class="carousel-arrow next" onclick="nextCardPhoto(event, this)" aria-label="Следующее фото">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <x-solar-alt-arrow-right-linear />
         </button>
         <div class="carousel-dots">
           @foreach($cardPhotos as $index => $photo)
@@ -309,7 +309,7 @@
     </div>
 
     <button class="fav-btn" onclick="toggleFav(this)" aria-label="Добавить квартиру в избранное">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <x-solar-heart-linear />
     </button>
   </div>
   <div class="card-body">
@@ -318,7 +318,7 @@
     </div>
     
     <div class="card-address-row">
-      <svg class="address-icon" viewBox="0 0 24 24"><path d="M3 9L12 2l9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <x-solar-home-2-linear class="address-icon" />
       <span>{{ $displayAddress }}</span>
     </div>
 
@@ -361,7 +361,7 @@
     <div class="card-badges-row">
       @if(!empty($item->latitude) && !empty($item->longitude))
         <button class="badge-pill map-pill" onclick="centerMapOnListing(event, {{ $item->latitude }}, {{ $item->longitude }}, {{ $item->id }})">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <x-solar-map-point-linear />
           На карте
         </button>
       @endif

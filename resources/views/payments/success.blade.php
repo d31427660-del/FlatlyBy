@@ -159,7 +159,7 @@
                     <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="80 200" stroke-linecap="round"></circle>
                 </svg>
             @else
-                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <x-solar-check-circle-linear />
             @endif
         </div>
 
@@ -244,7 +244,7 @@
         @else
         <a href="{{ route('dashboard') }}" class="dashboard-btn">
             Перейти в кабинет
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block; vertical-align:middle;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <x-solar-arrow-right-linear style="width: 16px; height: 16px; display:inline-block; vertical-align:middle;" />
         </a>
         @endif
 

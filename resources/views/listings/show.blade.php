@@ -1336,13 +1336,13 @@
         <h1 id="listing-title">{{ $listing->title ?? '' }}</h1>
         <div class="meta-row">
           <a href="#section-map" class="map-link">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <x-solar-map-point-linear width="16" height="16" />
             <span id="listing-address">{{ $listing->address ?? '' }}</span>
           </a>
         </div>
       </div>
       <button class="fav-link" id="fav-btn" onclick="toggleFav()">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <x-solar-heart-linear width="18" height="18" />
         <span>Добавить в избранное</span>
       </button>
     </div>
@@ -1458,7 +1458,7 @@
             <div class="char-block">
               <span class="char-label">Площадь дома</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                <x-solar-ruler-linear width="18" height="18" />
                 <span>{{ $listing->area ?? '0' }} м²</span>
               </div>
             </div>
@@ -1466,7 +1466,7 @@
             <div class="char-block">
               <span class="char-label">Площадь участка</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+                <x-solar-map-linear width="18" height="18" />
                 <span>{{ $listing->plot_area ?? '0' }} соток</span>
               </div>
             </div>
@@ -1474,7 +1474,7 @@
             <div class="char-block">
               <span class="char-label">Этажей в доме</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+                <x-solar-buildings-2-linear width="18" height="18" />
                 <span>{{ $listing->floors_in_house ?? '1' }}</span>
               </div>
             </div>
@@ -1483,7 +1483,7 @@
             <div class="char-block">
               <span class="char-label">Материал дома</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24"><path d="M20 12V4H4v8M4 12h16M4 12v8h16v-8" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+                <x-solar-home-2-linear width="18" height="18" />
                 <span>
                   @php
                     $materials = [
@@ -1506,7 +1506,7 @@
             <div class="char-block">
               <span class="char-label">Тип санузла</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24"><path d="M12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+                <x-solar-bath-linear width="18" height="18" />
                 <span>{{ $listing->layout ?: (($listing->bathrooms_count > 1) ? 'Раздельный ('.$listing->bathrooms_count.' шт.)' : 'Совмещенный') }}</span>
               </div>
             </div>
@@ -1515,7 +1515,7 @@
             <div class="char-block">
               <span class="char-label">Вместимость банкетного зала</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <x-solar-users-group-two-rounded-linear width="18" height="18" />
                 <span>До {{ $listing->banquet_hall_capacity }} человек</span>
               </div>
             </div>
@@ -1525,7 +1525,7 @@
             <div class="char-block">
               <span class="char-label">Парковка</span>
               <div class="char-value">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+                <x-solar-garage-linear width="18" height="18" />
                 <span>
                   @php
                     $parkings = [
@@ -1549,7 +1549,7 @@
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 @foreach($listing->video_surveillance as $surv)
                   <div class="char-value">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    <x-solar-videocamera-linear width="18" height="18" />
                     <span>{{ $surv }}</span>
                   </div>
                 @endforeach
@@ -1563,7 +1563,7 @@
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 @foreach($listing->neighborhood as $n)
                   <div class="char-value">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
+                    <x-solar-streets-linear width="18" height="18" />
                     <span>{{ $n }}</span>
                   </div>
                 @endforeach
@@ -1577,7 +1577,7 @@
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 @foreach($listing->object_purpose as $p)
                   <div class="char-value">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14 9 11"/></svg>
+                    <x-solar-check-circle-linear width="18" height="18" />
                     <span>{{ $p }}</span>
                   </div>
                 @endforeach
@@ -1590,28 +1590,28 @@
             <div class="char-block">
               <span class="char-label">Тип санузла</span>
               <div class="char-value" id="char-bathroom">
-                <svg viewBox="0 0 24 24"><path d="M12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z"/></svg>
+                <x-solar-bath-linear width="18" height="18" />
                 <span>Совмещённый</span>
               </div>
             </div>
             <div class="char-block">
               <span class="char-label">Балкон</span>
               <div class="char-value" id="char-balcony">
-                <svg viewBox="0 0 24 24"><path d="M3 9h18M9 21V9"/></svg>
+                <x-solar-window-frame-linear width="18" height="18" />
                 <span>{{ ($listing->has_balcony ?? false) ? 'Есть балкон' : 'Нет балкона' }}</span>
               </div>
             </div>
             <div class="char-block">
               <span class="char-label">Парковка</span>
               <div class="char-value" id="char-parking">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+                <x-solar-garage-linear width="18" height="18" />
                 <span>Бесплатная во дворе</span>
               </div>
             </div>
             <div class="char-block">
               <span class="char-label">Вид из окна</span>
               <div class="char-value" id="char-view">
-                <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2v20"/></svg>
+                <x-solar-eye-linear width="18" height="18" />
                 <span>Во двор</span>
               </div>
             </div>
@@ -1691,7 +1691,7 @@
         <div class="detail-map-wrap">
           <div id="detail-map" style="width:100%; height:100%;"></div>
           <a id="yandex-open-btn" class="map-external-link" href="#" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            <x-solar-plain-linear width="14" height="14" />
             Открыть в Яндекс.Картах
           </a>
         </div>
@@ -1705,7 +1705,7 @@
       <!-- Address Box -->
       <div class="widget-address-box">
         <div class="widget-addr">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+          <x-solar-home-2-linear width="16" height="16" />
           <span id="widget-address-text">{{ $listing->address ?? '' }}</span>
         </div>
         @if(!empty($listing->nearest_metro) && $listing->nearest_metro !== 'Нет' && $listing->nearest_metro !== 'Метро не указано')
@@ -1720,7 +1720,7 @@
         <div class="price-part">
           <div class="price-part-title">
             за сутки
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <x-solar-info-circle-linear width="14" height="14" style="color: var(--gray-text); vertical-align: middle;" />
           </div>
           <div class="price-part-val amber">
             от <strong id="price-daily" data-base-price="{{ $listing->price ?? '65' }}">{{ $listing->price ?? '65' }}</strong> <strong class="details-currency-symbol">Б̶</strong>
@@ -1729,7 +1729,7 @@
         <div class="price-part">
           <div class="price-part-title">
             за часы
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <x-solar-info-circle-linear width="14" height="14" style="color: var(--gray-text); vertical-align: middle;" />
           </div>
           <div class="price-part-val black">
             @if(isset($listing->weekend_price) && $listing->weekend_price > 0)
@@ -1804,7 +1804,7 @@
           @endif
           @if(!empty($listing->phone))
             <a href="tel:{{ $listing->phone }}" class="messenger-circle ph" id="link-phone" onclick="revealPhoneCall()" aria-label="Позвонить: {{ $listing->phone }}">
-              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.69 3.57.69a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.25 2.45.69 3.57a1 1 0 0 1-.27 1.11l-2.2 2.2z"/></svg>
+              <x-solar-phone-calling-linear width="20" height="20" />
             </a>
           @endif
         </div>
@@ -1871,7 +1871,7 @@
         <div style="text-align: center; margin-top: 28px;">
           <a href="/minsk/{{ $matchedDistrictSlug }}" class="primary-action-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px 32px; font-size: 15px; font-weight: 700; width: auto; max-width: 320px; margin: 0 auto; box-shadow: 0 4px 14px rgba(245, 166, 35, 0.25);">
             Смотреть все квартиры в {{ $matchedDistrictName === 'Немига' || $matchedDistrictName === 'Минск Мир' ? ($matchedDistrictName === 'Немига' ? 'районе Немиги' : 'Минск Мире') : 'районе ' . $matchedDistrictName }}
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <x-solar-arrow-right-linear width="16" height="16" />
           </a>
         </div>
       @endif
@@ -1922,7 +1922,7 @@
     <div class="drawer-contact-channels">
       @if(!empty($listing->phone))
         <a href="tel:{{ $listing->phone }}" class="drawer-channel phone" onclick="revealPhoneCall();">
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27c1.12.44 2.33.69 3.57.69a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.25 2.45.69 3.57a1 1 0 0 1-.27 1.11l-2.2 2.2z" fill="currentColor"/></svg>
+          <x-solar-phone-calling-linear width="22" height="22" />
           <div class="channel-info">
             <span class="channel-lbl">Позвонить по телефону</span>
             <span class="channel-val">{{ $listing->phone }}</span>
@@ -1971,7 +1971,7 @@
   <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Закрыть полноэкранный просмотр">×</button>
   
   <button class="lightbox-arrow prev" onclick="changeLightboxPhoto(-1, event)" aria-label="Предыдущее фото">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <x-solar-alt-arrow-left-linear width="24" height="24" />
   </button>
   
   <div class="lightbox-content" onclick="event.stopPropagation()">
@@ -1979,7 +1979,7 @@
   </div>
   
   <button class="lightbox-arrow next" onclick="changeLightboxPhoto(1, event)" aria-label="Следующее фото">
-    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    <x-solar-alt-arrow-right-linear width="24" height="24" />
   </button>
 </div>
 
@@ -2065,7 +2065,7 @@ const bedsGrid = document.getElementById('beds-grid');
 data.beds.forEach(bed => {
   const el = document.createElement('div');
   el.className = 'bed-item';
-  el.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="12" r="2"/></svg> 
+  el.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M2 19V5m20 14V9m-8 6h8M2 15h12m0 0v-4c0-.943 0-1.414-.293-1.707S15.057 9 14.114 9H9.886c-.943 0-1.414 0-1.707.293S7.886 10.057 7.886 11v4z"/><circle cx="6" cy="10" r="2"/></g></svg> 
     <span>${bed.name}</span>
     <span class="bed-count">× ${bed.count}</span>`;
   bedsGrid.appendChild(el);
@@ -2206,7 +2206,7 @@ if (territoryContainer && data.chars.territory && Array.isArray(data.chars.terri
   data.chars.territory.forEach(item => {
     const el = document.createElement('div');
     el.className = 'char-value';
-    el.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z"/></svg> <span>${item}</span>`;
+    el.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="m9 12l2 2l4-4m6 2a9 9 0 1 1-18 0a9 9 0 0 1 18 0"/></svg> <span>${item}</span>`;
     territoryContainer.appendChild(el);
   });
 }
@@ -2228,7 +2228,7 @@ if (Object.keys(data.amenities).length === 0 || (Object.keys(data.amenities).eve
     data.amenities[groupName].forEach(item => {
       const card = document.createElement('div');
       card.className = 'amenity-card';
-      card.innerHTML = `<svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14 9 11"/></svg> <span>${item}</span>`;
+      card.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="m9 12l2 2l4-4m6 2a9 9 0 1 1-18 0a9 9 0 0 1 18 0"/></svg> <span>${item}</span>`;
       itemsGrid.appendChild(card);
     });
     
@@ -2243,8 +2243,8 @@ data.rules.hosting.forEach(rule => {
   const el = document.createElement('li');
   el.className = 'rule-list-item' + (rule.ok ? ' ok' : '');
   el.innerHTML = rule.ok ? 
-    `<svg viewBox="0 0 24 24" style="stroke: var(--amber-dark);"><polyline points="20 6 9 17 4 12"/></svg> <span>${rule.text}</span>` : 
-    `<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> <span>${rule.text}</span>`;
+    `<svg width="16" height="16" viewBox="0 0 24 24" style="color: var(--amber-dark);"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l5 5L20 7"/></svg> <span>${rule.text}</span>` : 
+    `<svg width="16" height="16" viewBox="0 0 24 24" style="color: var(--gray-text);"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m18 6l-12 12M6 6l12 12"/></svg> <span>${rule.text}</span>`;
   rulesHostingList.appendChild(el);
 });
 
@@ -2253,7 +2253,7 @@ const rulesCheckingList = document.getElementById('rules-checking-list');
 data.rules.checking.forEach(rule => {
   const el = document.createElement('li');
   el.className = 'rule-list-item ok';
-  el.innerHTML = `<svg viewBox="0 0 24 24" style="stroke: var(--amber-dark);"><polyline points="20 6 9 17 4 12"/></svg> <span>${rule.text}</span>`;
+  el.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" style="color: var(--amber-dark);"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l5 5L20 7"/></svg> <span>${rule.text}</span>`;
   rulesCheckingList.appendChild(el);
 });
 
@@ -2262,7 +2262,7 @@ const paymentContainer = document.getElementById('payment-container');
 data.payments.forEach(pay => {
   const el = document.createElement('div');
   el.className = 'pay-card';
-  el.innerHTML = `<svg viewBox="0 0 24 24" width="22" height="22"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> <span>${pay}</span>`;
+  el.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="14" x="2" y="5" rx="3"/><path stroke-linecap="round" d="M2 10h20m-16 4h4"/></g></svg> <span>${pay}</span>`;
   paymentContainer.appendChild(el);
 });
 
@@ -2271,8 +2271,8 @@ const reviewsContainer = document.getElementById('reviews-list-container');
 if (data.reviews.length === 0) {
   reviewsContainer.innerHTML = `
     <div style="text-align: center; padding: 40px 20px; color: var(--gray-text);">
-      <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 12px; display: block; opacity: 0.6;">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <svg width="48" height="48" viewBox="0 0 24 24" style="margin: 0 auto 12px; display: block; opacity: 0.6;">
+        <path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.5 21.5l4.5-.838A9.955 9.955 0 0 0 12 22"/>
       </svg>
       <div style="font-size: 14px; font-weight: 600;">Отзывов пока нет</div>
       <div style="font-size: 12px; margin-top: 4px;">Вы можете оставить первый отзыв после проживания!</div>
@@ -2293,7 +2293,7 @@ if (data.reviews.length === 0) {
         </div>
         <div class="rev-rating-box">
           <div class="rev-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2l3.09 6.26L22 9.27l-5 4.87l1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87l6.91-1.01z"/></svg>
             ${rev.rating}
           </div>
           <div class="rev-elapsed">${rev.elapsed}</div>
@@ -2720,7 +2720,7 @@ function submitReview(event) {
           </div>
           <div class="rev-rating-box">
             <div class="rev-stars">
-              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2l3.09 6.26L22 9.27l-5 4.87l1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87l6.91-1.01z"/></svg>
               ${rev.rating}
             </div>
             <div class="rev-elapsed">${rev.elapsed}</div>

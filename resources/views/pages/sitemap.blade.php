@@ -145,7 +145,7 @@
     <!-- 1. Основные разделы -->
     <div class="sitemap-card">
       <h2>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <x-solar-home-2-linear width="20" height="20" />
         Основные разделы
       </h2>
       <ul class="sitemap-links">
@@ -163,7 +163,7 @@
     <!-- 2. Помощь и информация -->
     <div class="sitemap-card">
       <h2>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <x-solar-question-circle-linear width="20" height="20" />
         Помощь и инфо
       </h2>
       <ul class="sitemap-links">
@@ -180,7 +180,7 @@
     <!-- 3. Популярные типы -->
     <div class="sitemap-card">
       <h2>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <x-solar-layers-linear width="20" height="20" />
         Поиск по категориям
       </h2>
       <ul class="sitemap-links">
@@ -197,7 +197,7 @@
     <!-- 4. Города (Широкая карточка) -->
     <div class="sitemap-card full-width">
       <h2>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <x-solar-map-point-linear width="20" height="20" />
         Города с объявлениями
       </h2>
       <p style="font-size: 13.5px; color: var(--gray-text); margin-bottom: 16px;">Выберите интересующий вас город для поиска прямых контактов арендодателей:</p>
@@ -228,7 +228,7 @@
     @if($blogPosts->count() > 0)
       <div class="sitemap-card full-width">
         <h2>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <x-solar-book-linear width="20" height="20" />
           Гид по Беларуси (Последние статьи)
         </h2>
         <div class="blog-subgrid">

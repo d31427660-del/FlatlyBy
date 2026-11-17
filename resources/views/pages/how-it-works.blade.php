@@ -209,11 +209,11 @@
   <!-- Switch Tabs -->
   <div class="hiw-tabs">
     <button class="hiw-tab-btn active" onclick="switchTab('guest')">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <x-solar-user-linear width="18" height="18" />
       Для гостей
     </button>
     <button class="hiw-tab-btn" onclick="switchTab('host')">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <x-solar-home-2-linear width="18" height="18" />
       Для хозяев
     </button>
   </div>
@@ -226,7 +226,7 @@
       <div class="step-card">
         <span class="step-num">1</span>
         <div class="step-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <x-solar-magnifer-linear width="32" height="32" />
         </div>
         <h3>Найдите жильё</h3>
         <p>Используйте удобный поиск и систему фильтров на главной странице. Выбирайте город, количество комнат, спальные места, цену, наличие джакузи, бани или бассейна.</p>
@@ -236,7 +236,7 @@
       <div class="step-card">
         <span class="step-num">2</span>
         <div class="step-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <x-solar-book-linear width="32" height="32" />
         </div>
         <h3>Смотрите детали</h3>
         <p>Изучите подробное описание квартиры или коттеджа, точную карту расположения, реальные фотографии, правила заезда и список доступных удобств.</p>
@@ -246,7 +246,7 @@
       <div class="step-card">
         <span class="step-num">3</span>
         <div class="step-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <x-solar-phone-calling-linear width="32" height="32" />
         </div>
         <h3>Свяжитесь напрямую</h3>
         <p>Нажмите кнопку показа контактов, чтобы увидеть телефон хозяина, или напишите ему в мессенджеры (Telegram, Viber) прямо с нашего сайта. Никаких броней через посредников!</p>
@@ -263,7 +263,7 @@
       <div class="step-card">
         <span class="step-num">1</span>
         <div class="step-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          <x-solar-user-plus-linear width="32" height="32" />
         </div>
         <h3>Зарегистрируйтесь</h3>
         <p>Создайте аккаунт арендодателя на сайте за несколько секунд. Это позволит вам размещать свои объекты недвижимости и управлять ими в Личном кабинете.</p>
@@ -273,7 +273,7 @@
       <div class="step-card">
         <span class="step-num">2</span>
         <div class="step-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <x-solar-pen-2-linear width="32" height="32" />
         </div>
         <h3>Заполните форму</h3>
         <p>Добавьте адрес, загрузите качественные фотографии, укажите цену за сутки, количество комнат и другие характеристики вашего объекта.</p>
@@ -283,7 +283,7 @@
       <div class="step-card">
         <span class="step-num">3</span>
         <div class="step-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <x-solar-chat-round-line-linear width="32" height="32" />
         </div>
         <h3>Принимайте звонки</h3>
         <p>Ваше объявление нужно активировать в личном кабинете, чтобы оно мгновенно появилось в каталоге. Гости будут видеть ваши прямые контактные данные и звонить вам напрямую без комиссий.</p>
@@ -299,7 +299,7 @@
       <p>Обычные сервисы бронирования удерживают от 15% до 25% комиссии с каждого заказа, что вынуждает хозяев завышать цены. Flatly.by работает по принципу доски объявлений. Мы не участвуем в процессе оплаты и не берем комиссию со сделок. Вы платите только за дополнительные платные услуги (поднятие в топ, выделение цветом), если хотите ускорить поиск гостей. Для гостей сервис абсолютно бесплатен.</p>
     </div>
     <div class="nc-illustration">
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <x-solar-wallet-linear width="64" height="64" />
     </div>
   </div>
 

@@ -1763,10 +1763,7 @@
   @if($unpaidListings->isNotEmpty())
   <div class="unpaid-banner">
     <div class="unpaid-banner-icon">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-        <line x1="2" y1="10" x2="22" y2="10"></line>
-      </svg>
+      <x-solar-card-linear width="24" height="24" />
     </div>
     <div class="unpaid-banner-content">
       <h4>Внимание! Требуется активация размещения</h4>
@@ -1795,37 +1792,37 @@
       <ul class="sidebar-menu">
         <li>
           <a class="active" id="menu-listings" onclick="switchDashboardTab('listings', this)">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <x-solar-home-2-linear width="18" height="18" />
             Мои объявления
           </a>
         </li>
         <li>
           <a id="menu-stats" onclick="switchDashboardTab('stats', this)">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <x-solar-chart-2-linear width="18" height="18" />
             Статистика
           </a>
         </li>
         <li>
           <a id="menu-profile" onclick="switchDashboardTab('profile', this)">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <x-solar-user-linear width="18" height="18" />
             Настройки профиля
           </a>
         </li>
         <li>
           <a id="menu-tariffs" onclick="switchDashboardTab('tariffs', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <x-solar-rocket-2-linear width="18" height="18" />
             Тарифы и услуги
           </a>
         </li>
         <li>
           <a id="menu-guide" onclick="switchDashboardTab('guide', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <x-solar-book-linear width="18" height="18" />
             Руководство
           </a>
         </li>
         <li>
           <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <x-solar-logout-2-linear width="18" height="18" />
             Выйти
           </a>
         </li>
@@ -1860,7 +1857,7 @@
           <div class="section-header">
             <h2>Мои объявления</h2>
             <a href="{{ route('listings.create') }}" class="add-btn">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <x-solar-add-circle-linear width="18" height="18" />
               Разместить жильё
             </a>
           </div>
@@ -1903,28 +1900,28 @@
           <div id="stats-locked-overlay" class="stats-locked-overlay" style="display: none;">
             <div class="lock-card">
               <div class="lock-icon">
-                <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>
+                <x-solar-lock-keyhole-linear width="32" height="32" />
               </div>
               <h3>Детальная статистика</h3>
               <ul class="lock-features-list">
                 <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+                  <x-solar-check-circle-linear width="16" height="16" />
                   <span>Интерактивные графики просмотров и обращений по дням недели</span>
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+                  <x-solar-check-circle-linear width="16" height="16" />
                   <span>Детализация контактов: звонки, Telegram, WhatsApp и Viber отдельно</span>
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+                  <x-solar-check-circle-linear width="16" height="16" />
                   <span>Пообъектный анализ: просмотры, клики и конверсия (CR %) для каждого жилья</span>
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+                  <x-solar-check-circle-linear width="16" height="16" />
                   <span>Пиковые часы: статистика активности гостей по часам суток</span>
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="3" fill="none"/></svg>
+                  <x-solar-check-circle-linear width="16" height="16" />
                   <span>Типы устройств: разделение аудитории на мобильные и ПК</span>
                 </li>
               </ul>
@@ -2056,7 +2053,7 @@
             <div class="profile-avatar-wrap">
               <div class="profile-avatar-large" id="profile-avatar-container">Н</div>
               <label class="profile-avatar-upload-btn" for="avatar-file-input">
-                <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <x-solar-camera-linear width="18" height="18" />
                 <input type="file" id="avatar-file-input" style="display:none;" accept="image/*" onchange="uploadAvatarImage(this)">
               </label>
             </div>
@@ -2101,7 +2098,7 @@
             </div>
 
             <button type="submit" class="profile-save-btn">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <x-solar-check-circle-linear width="18" height="18" />
               Сохранить изменения
             </button>
           </form>
@@ -2168,19 +2165,19 @@
                 </div>
                 <ul class="tariff-features-list">
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     24/7 показ на интерактивной карте
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Прямые контакты (Viber, Telegram, Phone)
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Детальная статистика просмотров и кликов
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Без комиссий с ваших бронирований
                   </li>
                 </ul>
@@ -2201,19 +2198,19 @@
                 </div>
                 <ul class="tariff-features-list">
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     24/7 показ на интерактивной карте
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Прямые контакты (Viber, Telegram, Phone)
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Детальная статистика просмотров и кликов
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Без комиссий с ваших бронирований
                   </li>
                 </ul>
@@ -2234,19 +2231,19 @@
                 </div>
                 <ul class="tariff-features-list">
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Привлекающий внимание желтый фон
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     В среднем в 3-4 раза больше просмотров
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Выделение объекта на интерактивной карте
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    <x-solar-check-circle-linear width="16" height="16" />
                     Повышает доверие со стороны арендаторов
                   </li>
                 </ul>
@@ -2256,7 +2253,7 @@
 
           <!-- Promo info / discounts info -->
           <div class="tariffs-info-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <x-solar-info-circle-linear width="20" height="20" />
             <div class="tariffs-info-text">
               <h4>Как активировать или продлить тариф?</h4>
               <p>Перейдите во вкладку <strong>«Мои объявления»</strong>. Нажмите кнопку <strong>«Активировать бесплатно»</strong> или <strong>«Продлить тариф»</strong> под нужным жильем. В открывшемся окне вы сможете выбрать желаемый период размещения (на 3, 6 или 12 месяцев со скидками до -30%) и при необходимости ввести ваш скидочный промокод.</p>
@@ -2708,7 +2705,7 @@ function renderDetailedStatsWidgets() {
     deviceSplit.innerHTML = `
       <div class="device-row">
         <div class="device-info">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3" stroke-linecap="round"/><circle cx="12" cy="17.5" r="1" fill="currentColor"/></svg>
           <span>Смартфоны</span>
         </div>
         <div class="device-bar-bg">
@@ -2718,7 +2715,7 @@ function renderDetailedStatsWidgets() {
       </div>
       <div class="device-row">
         <div class="device-info">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="12" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="15" x2="12" y2="21"/></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M1 19h22" stroke-linecap="round"/></svg>
           <span>Компьютеры</span>
         </div>
         <div class="device-bar-bg">
@@ -2728,7 +2725,7 @@ function renderDetailedStatsWidgets() {
       </div>
       <div class="device-row">
         <div class="device-info">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="3"/><circle cx="12" cy="18" r="0.75" fill="currentColor"/></svg>
           <span>Планшеты</span>
         </div>
         <div class="device-bar-bg">
@@ -2749,7 +2746,7 @@ function renderDetailedStatsWidgets() {
       compareHtml = `
         <div class="market-compare-card">
           <div class="market-compare-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 11v6m0-8.5v.5" stroke-linecap="round"/></svg>
           </div>
           <div class="market-compare-info">
             <h4>Сравнение с конкурентами</h4>
@@ -2763,7 +2760,7 @@ function renderDetailedStatsWidgets() {
       compareHtml = `
         <div class="market-compare-card">
           <div class="market-compare-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M5 14l5-5 4 4 7-7m0 0h-5m5 0v5"/></svg>
           </div>
           <div class="market-compare-info">
             <h4>Выше рынка на ${diff}%</h4>
@@ -2776,7 +2773,7 @@ function renderDetailedStatsWidgets() {
       compareHtml = `
         <div class="market-compare-card">
           <div class="market-compare-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16M7 16v-4m5 4V8m5 8v-6" stroke-linecap="round"/></svg>
           </div>
           <div class="market-compare-info">
             <h4>Конверсия близка к норме</h4>
@@ -2946,7 +2943,7 @@ function updateAvatarWidgets(name, avatarDataUrl) {
     if (avatarDataUrl) {
       headerAvatar.innerHTML = `<img src="${avatarDataUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
     } else {
-      headerAvatar.innerHTML = `<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`;
+      headerAvatar.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="9" r="3"/><path d="M17.969 19a7.994 7.994 0 0 0-11.938 0" stroke-linecap="round"/></svg>`;
     }
   }
 }
@@ -3137,7 +3134,8 @@ function renderListings() {
     container.innerHTML = `
       <div style="text-align: center; padding: 40px; color: var(--gray-text);">
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 12px; display: block;">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
+          <path d="M4 19V5a2 2 0 0 1 2-2h10l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>
+          <path d="M14 3v4h4M8 12h8M8 16h5" stroke-linecap="round"/>
         </svg>
         <p style="font-weight: 600;">У вас пока нет добавленных объявлений.</p>
         <p style="font-size: 13px; margin-top: 4px;">Нажмите кнопку «Разместить жильё», чтобы опубликовать первое объявление.</p>
@@ -3276,7 +3274,7 @@ function renderDashboardPaginationControls(totalPages) {
   const prevDisabled = dashboardCurrentPage === 1 ? 'disabled' : '';
   const prevOnClick = dashboardCurrentPage === 1 ? '' : `onclick="changeDashboardPage(${dashboardCurrentPage - 1})"`;
   html += `<button class="page-btn ${prevDisabled}" ${prevOnClick} aria-label="Предыдущая страница">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--slate-900)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
   </button>`;
   
   // Кнопки страниц с усечением (truncation)
@@ -3313,7 +3311,7 @@ function renderDashboardPaginationControls(totalPages) {
   const nextDisabled = dashboardCurrentPage === totalPages ? 'disabled' : '';
   const nextOnClick = dashboardCurrentPage === totalPages ? '' : `onclick="changeDashboardPage(${dashboardCurrentPage + 1})"`;
   html += `<button class="page-btn ${nextDisabled}" ${nextOnClick} aria-label="Следующая страница">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--slate-900)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
   </button>`;
   
   pagContainer.innerHTML = html;

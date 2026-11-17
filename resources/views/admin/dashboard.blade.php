@@ -650,7 +650,7 @@
       <form action="{{ route('admin.logout') }}" method="POST">
         @csrf
         <button type="submit" class="btn-logout">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <x-solar-logout-2-linear width="16" height="16" />
           Выйти из панели
         </button>
       </form>
@@ -672,7 +672,7 @@
         <div class="metric-header">
           <span class="metric-label">Всего жилья</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <x-solar-home-2-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val" id="count-total">{{ $metrics['total'] }}</div>
@@ -682,7 +682,7 @@
         <div class="metric-header">
           <span class="metric-label">Ожидают оплаты</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <x-solar-card-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val" id="count-pending-payment">{{ $metrics['pending_payment'] }}</div>
@@ -692,7 +692,7 @@
         <div class="metric-header">
           <span class="metric-label">Опубликовано</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><polyline points="20 6 9 17 4 12"/></svg>
+            <x-solar-check-circle-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val" id="count-active">{{ $metrics['active'] }}</div>
@@ -702,7 +702,7 @@
         <div class="metric-header">
           <span class="metric-label">Скрыто</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            <x-solar-eye-closed-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val" id="count-hidden">{{ $metrics['hidden'] }}</div>
@@ -712,7 +712,7 @@
         <div class="metric-header">
           <span class="metric-label">Всего хозяев</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <x-solar-users-group-two-rounded-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val">{{ $metrics['hosts'] }}</div>
@@ -722,7 +722,7 @@
         <div class="metric-header">
           <span class="metric-label">Гостей сегодня</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <x-solar-user-rounded-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val" style="color: var(--primary);">{{ $visitorStats['unique_today'] }}</div>
@@ -732,7 +732,7 @@
         <div class="metric-header">
           <span class="metric-label">Просмотров за день</span>
           <div class="metric-icon-wrap">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <x-solar-eye-linear width="18" height="18" />
           </div>
         </div>
         <div class="metric-val">{{ $visitorStats['views_today'] }}</div>
@@ -743,27 +743,27 @@
     <div class="tabs-nav-container">
       <div class="tabs-nav">
         <button class="tab-btn active" data-tab="listings">
-          <svg viewBox="0 0 24 24" class="tab-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <x-solar-home-2-linear class="tab-icon" width="16" height="16" />
           Объявления
         </button>
         <button class="tab-btn" data-tab="agency">
-          <svg viewBox="0 0 24 24" class="tab-icon" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <x-solar-buildings-2-linear class="tab-icon" width="16" height="16" />
           Агентство
         </button>
         <button class="tab-btn" data-tab="users">
-          <svg viewBox="0 0 24 24" class="tab-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <x-solar-users-group-two-rounded-linear class="tab-icon" width="16" height="16" />
           Пользователи
         </button>
         <button class="tab-btn" data-tab="transactions">
-          <svg viewBox="0 0 24 24" class="tab-icon"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          <x-solar-card-linear class="tab-icon" width="16" height="16" />
           Транзакции
         </button>
         <button class="tab-btn" data-tab="analytics">
-          <svg viewBox="0 0 24 24" class="tab-icon"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          <x-solar-chart-2-linear class="tab-icon" width="16" height="16" />
           📊 Посещаемость
         </button>
         <button class="tab-btn" data-tab="banners">
-          <svg viewBox="0 0 24 24" class="tab-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <x-solar-gallery-linear class="tab-icon" width="16" height="16" />
           Баннеры
         </button>
       </div>
@@ -775,10 +775,10 @@
       <div class="filter-bar">
         <div class="search-input-wrapper">
           <input type="text" id="search-input" class="search-input" placeholder="Поиск объявлений по названию, адресу, имени хозяина или УНП...">
-          <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <x-solar-magnifer-linear class="search-icon" width="18" height="18" />
         </div>
         <div style="min-width: 180px;">
-          <select id="listing-status-filter" class="search-input" style="padding-left: 14px; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;">
+          <select id="listing-status-filter" class="search-input" style="padding-left: 14px; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M6 9l6 6 6-6%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;">
             <option value="">Все статусы</option>
             <option value="active">Опубликовано</option>
             <option value="pending_payment">Ожидает оплаты</option>
@@ -951,10 +951,10 @@
       <div class="filter-bar">
         <div class="search-input-wrapper">
           <input type="text" id="agency-search-input" class="search-input" placeholder="Поиск по агентским объявлениям (название, адрес, имя хозяина или УНП)...">
-          <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <x-solar-magnifer-linear class="search-icon" width="18" height="18" />
         </div>
         <div style="min-width: 180px;">
-          <select id="agency-status-filter" class="search-input" style="padding-left: 14px; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;">
+          <select id="agency-status-filter" class="search-input" style="padding-left: 14px; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M6 9l6 6 6-6%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;">
             <option value="">Все статусы</option>
             <option value="active">Опубликовано</option>
             <option value="pending_payment">Ожидает оплаты</option>
@@ -1127,7 +1127,7 @@
       <div class="filter-bar">
         <div class="search-input-wrapper">
           <input type="text" id="user-search-input" class="search-input" placeholder="Поиск пользователей по имени, email, телефону или УНП...">
-          <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <x-solar-magnifer-linear class="search-icon" width="18" height="18" />
         </div>
       </div>
 
@@ -1266,10 +1266,10 @@
       <div class="filter-bar">
         <div class="search-input-wrapper">
           <input type="text" id="tx-search-input" class="search-input" placeholder="Поиск транзакций по хозяину, объявлению или промокоду...">
-          <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <x-solar-magnifer-linear class="search-icon" width="18" height="18" />
         </div>
         <div style="min-width: 180px;">
-          <select id="tx-status-filter" class="search-input" style="padding-left: 14px; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;">
+          <select id="tx-status-filter" class="search-input" style="padding-left: 14px; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748B%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M6 9l6 6 6-6%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;">
             <option value="">Все статусы</option>
             <option value="completed">Успешно</option>
             <option value="pending">Ожидает</option>
@@ -1577,7 +1577,7 @@
 
           <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
             <button type="submit" class="tab-btn active" style="padding: 10px 24px; border-radius: 10px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              <x-solar-diskette-linear width="16" height="16" style="flex-shrink:0;" />
               Сохранить изменения баннеров
             </button>
           </div>
