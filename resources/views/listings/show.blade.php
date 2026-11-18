@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
+@php
+  $inCityTitle = \App\Helpers\CityHelper::getInCityName($listing->city ?? 'Минск');
+  $cleanListingAddress = preg_replace('/\b([\p{L}\d-]+)\s+\1\b/iu', '$1', $listing->address ?? '');
+@endphp
 @section('canonical_url', route('listings.show', ['id' => $listing->id, 'slug' => $listing->slug]))
-@section('title', ($listing->title ?? 'Детали объявления') . ' в г. ' . ($listing->city ?? 'Минск') . ' — Flatly.by')
+@section('title', ($listing->title ?? 'Детали объявления') . ' ' . $inCityTitle . ' — Flatly.by')
 @section('meta_description', Str::limit(strip_tags($listing->description ?? 'Аренда жилья без посредников на Flatly.by'), 155))
 @section('og_image', $listing->image && strlen($listing->image) > 4 ? asset($listing->image) : asset('opla.png'))
 
@@ -1327,7 +1331,16 @@
   ];
 @endphp
 <!-- MAIN CONTAINER -->
-<main class="container">
+<div class="container">
+  @php
+    $detailCitySlug = \App\Helpers\CityHelper::slugify($listing->city ?? 'Минск');
+    $detailBreadcrumbs = [
+        ['url' => '/', 'title' => 'Главная'],
+        ['url' => '/' . $detailCitySlug, 'title' => 'Жилье ' . $inCityTitle],
+        ['url' => null, 'title' => $listing->title ?? 'Объявление']
+    ];
+  @endphp
+  @include('listings.partials.breadcrumbs', ['breadcrumbs' => $detailBreadcrumbs])
   
   <!-- TITLE BLOCK -->
   <div class="title-section">
@@ -1337,7 +1350,7 @@
         <div class="meta-row">
           <a href="#section-map" class="map-link">
             <x-solar-map-point-linear width="16" height="16" />
-            <span id="listing-address">{{ $listing->address ?? '' }}</span>
+            <span id="listing-address">{{ $cleanListingAddress }}</span>
           </a>
         </div>
       </div>
@@ -1529,6 +1542,9 @@
                 <span>
                   @php
                     $parkings = [
+                      'free' => 'Бесплатная на территории',
+                      'private' => 'Охраняемая на территории',
+                      'paid' => 'Платная на территории',
                       'free_onsite' => 'Бесплатная на территории',
                       'paid_onsite' => 'Платная на территории',
                       'street' => 'Уличная рядом',
@@ -1637,16 +1653,28 @@
       </div>
 
       <!-- Условия заселения -->
+      @php
+        $rawCheckin = trim($listing->check_in_time ?? '14:00');
+        $rawCheckout = trim($listing->check_out_time ?? '12:00');
+        $cleanCheckin = preg_replace('/^(\d{1,2}:\d{2}):\d{2}$/', '$1', $rawCheckin);
+        $cleanCheckout = preg_replace('/^(\d{1,2}:\d{2}):\d{2}$/', '$1', $rawCheckout);
+        if (!str_starts_with(mb_strtolower($cleanCheckin), 'с ')) {
+            $cleanCheckin = 'с ' . $cleanCheckin;
+        }
+        if (!str_starts_with(mb_strtolower($cleanCheckout), 'до ')) {
+            $cleanCheckout = 'до ' . $cleanCheckout;
+        }
+      @endphp
       <div class="section-card" id="section-rules">
         <h2>Правила и условия заселения</h2>
         <div class="rules-times">
           <div class="time-card">
             <span>Заселение</span>
-            <h4 id="time-checkin">{{ $listing->check_in_time ?? 'с 14:00' }}</h4>
+            <h4 id="time-checkin">{{ $cleanCheckin }}</h4>
           </div>
           <div class="time-card">
             <span>Выселение</span>
-            <h4 id="time-checkout">{{ $listing->check_out_time ?? 'до 12:00' }}</h4>
+            <h4 id="time-checkout">{{ $cleanCheckout }}</h4>
           </div>
         </div>
         <div class="rules-split">
@@ -1686,11 +1714,11 @@
 
       <!-- Карта -->
       <div class="section-card" id="section-map">
-        <h2 id="map-title-address">{{ $listing->address ?? '' }}</h2>
-        <p style="color: var(--gray-text); font-size: 13px; margin-top: -10px; margin-bottom: 15px;">Точный адрес и ориентиры расположения квартиры на интерактивной карте.</p>
+        <h2 id="map-title-address">{{ $cleanListingAddress }}</h2>
+        <p style="color: var(--gray-text); font-size: 13px; margin-top: -10px; margin-bottom: 15px;">Точный адрес и ориентиры расположения {{ in_array($listing->type, ['cottage', 'agrotourism']) ? 'дома / коттеджа' : 'квартиры' }} на интерактивной карте.</p>
         <div class="detail-map-wrap">
           <div id="detail-map" style="width:100%; height:100%;"></div>
-          <a id="yandex-open-btn" class="map-external-link" href="#" target="_blank">
+          <a id="yandex-open-btn" class="map-external-link" href="https://yandex.ru/maps/?text={{ $listing->latitude ?? '53.902' }},{{ $listing->longitude ?? '27.555' }}" target="_blank" rel="noopener">
             <x-solar-plain-linear width="14" height="14" />
             Открыть в Яндекс.Картах
           </a>
@@ -1706,7 +1734,7 @@
       <div class="widget-address-box">
         <div class="widget-addr">
           <x-solar-home-2-linear width="16" height="16" />
-          <span id="widget-address-text">{{ $listing->address ?? '' }}</span>
+          <span id="widget-address-text">{{ $cleanListingAddress }}</span>
         </div>
         @if(!empty($listing->nearest_metro) && $listing->nearest_metro !== 'Нет' && $listing->nearest_metro !== 'Метро не указано')
         <div class="widget-metro" id="widget-metro-text">
@@ -1832,19 +1860,19 @@
     $matchedDistrictSlug = null;
     $matchedDistrictName = null;
     if (mb_strtolower($listing->city) === 'минск') {
-        $addressLower = mb_strtolower($listing->address . ' ' . $listing->district . ' ' . $listing->title . ' ' . $listing->description);
+        $addressAndDistrictLower = mb_strtolower(($listing->address ?? '') . ' ' . ($listing->district ?? ''));
         foreach ($minskDistrictsList as $slug => $name) {
             $keyword = mb_strtolower($name);
-            if ($slug === 'kamennaya-gorka') $keyword = 'каменн';
+            if ($slug === 'kamennaya-gorka') $keyword = 'каменная горка';
             elseif ($slug === 'nemiga') $keyword = 'немиг';
             elseif ($slug === 'suharevo') $keyword = 'сухарев';
-            elseif ($slug === 'zelenyy-lug') $keyword = 'зелен';
+            elseif ($slug === 'zelenyy-lug') $keyword = 'зелёный луг';
             elseif ($slug === 'malinovka') $keyword = 'малиновк';
             elseif ($slug === 'serebryanka') $keyword = 'серебрянк';
             elseif ($slug === 'vesnyanka') $keyword = 'веснянк';
             elseif ($slug === 'kuntsevschina') $keyword = 'кунцевщин';
             
-            if (mb_strpos($addressLower, $keyword) !== false) {
+            if (mb_strpos($addressAndDistrictLower, $keyword) !== false || ($slug === 'zelenyy-lug' && mb_strpos($addressAndDistrictLower, 'зеленый луг') !== false)) {
                 $matchedDistrictSlug = $slug;
                 $matchedDistrictName = $name;
                 break;
@@ -1857,9 +1885,9 @@
     <section class="similar-section">
       <h2 class="similar-title">
         @if($matchedDistrictName)
-          Похожие объявления в районе {{ $matchedDistrictName }}
+          Похожие объявления {{ $inCityTitle }} ({{ $matchedDistrictName }})
         @else
-          Похожие объявления в городе {{ $listing->city }}
+          Похожие объявления {{ $inCityTitle }}
         @endif
       </h2>
       <div class="similar-listings-grid">
@@ -1881,12 +1909,14 @@
   @php
     $currentCitySlug = \App\Helpers\CityHelper::slugify($listing->city);
     $seoPagesConfig = config('seo_landing_pages');
-    $cityLandingPages = $seoPagesConfig[$currentCitySlug] ?? [];
+    $cityLandingPages = collect($seoPagesConfig[$currentCitySlug] ?? [])->reject(function($pageData, $tagSlug) {
+        return in_array($tagSlug, ['_main', 'u-vokzala', 'kvartiry-na-sutki-u-metro']);
+    })->all();
   @endphp
 
   @if(!empty($cityLandingPages))
     <section class="popular-queries-section" style="margin-top: 48px; border-top: 1px solid var(--border); padding-top: 40px; text-align: left;">
-      <h2 class="similar-title" style="margin-bottom: 20px;">Популярные подборки жилья в г. {{ $listing->city }}</h2>
+      <h2 class="similar-title" style="margin-bottom: 20px;">Популярные подборки жилья {{ $inCityTitle }}</h2>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
         @foreach($cityLandingPages as $tagSlug => $pageData)
           <a href="/{{ $currentCitySlug }}/{{ $tagSlug }}" style="background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 8px 18px; font-size: 13.5px; font-weight: 600; color: var(--slate-700); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--amber)'; this.style.background='#fffbeb'; this.style.color='var(--amber-dark)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--white)'; this.style.color='var(--slate-700)'">
@@ -1898,7 +1928,7 @@
     </section>
   @endif
 
-</main>
+</div>
 
 <!-- Sticky Bottom Bar for Mobile -->
 <div class="mobile-sticky-bar" id="mobile-sticky-bar">
@@ -1962,8 +1992,6 @@
     </div>
   </div>
 </div>
-
-</main>
 
 <!-- LIGHTBOX MODAL -->
 <div class="lightbox-overlay" id="lightbox-modal" onclick="closeLightbox(event)">

@@ -227,7 +227,7 @@ img { display: block; max-width: 100%; }
 }
 
 .searchbar {
-  flex: 1; max-width: 980px;
+  flex: 1; min-width: 0; max-width: 980px;
   border: 1px solid var(--border);
   border-radius: 40px;
   display: flex; align-items: center;
@@ -235,7 +235,7 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   transition: box-shadow .2s;
   background: var(--white);
-  margin: 0 16px;
+  margin: 0 12px;
 }
 .searchbar:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
 .sb-seg {
@@ -998,10 +998,10 @@ body.showing-only-favorites .nav-fav-link svg {
 @media (max-width: 1420px) {
   .topnav {
     padding: 0 12px;
-    gap: 10px;
+    gap: 8px;
   }
   .searchbar {
-    margin: 0 6px;
+    margin: 0 4px;
   }
   .contact-text-full, .create-text-full {
     display: none;
@@ -1010,19 +1010,20 @@ body.showing-only-favorites .nav-fav-link svg {
     display: inline;
   }
   .currency-selector .currency-label {
-    display: inline;
+    display: none;
   }
   .currency-btn {
-    padding: 8px;
+    padding: 6px 8px;
   }
   .sb-seg {
-    padding: 0 10px;
+    padding: 0 8px;
+    min-width: 0;
   }
-  .sb-seg-city { min-width: 70px; }
-  .sb-seg-type { min-width: 65px; }
-  .sb-seg-rooms { min-width: 50px; }
-  .sb-seg-price { min-width: 50px; }
-  .sb-seg-guests { min-width: 65px; }
+  .sb-seg-city { min-width: 55px; }
+  .sb-seg-type { min-width: 50px; }
+  .sb-seg-rooms { min-width: 45px; }
+  .sb-seg-price { min-width: 40px; }
+  .sb-seg-guests { min-width: 45px; }
   .searchbar .sb-seg-val {
     font-size: 12px !important;
   }
@@ -1030,13 +1031,22 @@ body.showing-only-favorites .nav-fav-link svg {
 
 @media (max-width: 1180px) {
   .topnav {
-    gap: 8px;
+    gap: 6px;
+    padding: 0 10px;
   }
+  .sb-seg {
+    padding: 0 6px;
+  }
+  .sb-seg-city { min-width: 44px; }
+  .sb-seg-type { min-width: 44px; }
+  .sb-seg-rooms { min-width: 38px; }
+  .sb-seg-price { min-width: 34px; }
+  .sb-seg-guests { min-width: 34px; }
   .nav-contact-btn {
     padding: 8px;
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     justify-content: center;
   }
   .nav-contact-btn .contact-icon {
@@ -1051,8 +1061,8 @@ body.showing-only-favorites .nav-fav-link svg {
   }
   .nav-create-btn {
     padding: 0;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     justify-content: center;
   }
@@ -1067,18 +1077,20 @@ body.showing-only-favorites .nav-fav-link svg {
     margin-right: 0px;
   }
   .currency-selector {
-    margin-left: 2px;
+    margin-left: 0px;
   }
   .nav-user {
     margin-left: 2px;
-  }
-  .logo {
-    font-size: 20px;
+    padding: 4px 6px 4px 10px;
     gap: 6px;
   }
+  .logo {
+    font-size: 19px;
+    gap: 5px;
+  }
   .logo svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 }
 
@@ -1416,7 +1428,7 @@ body.is-home-hero.scrolled .topnav .searchbar {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 1500;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -2139,9 +2151,9 @@ body.is-home-hero.scrolled .topnav .searchbar {
       <div>
         <h4>Жильё</h4>
         <ul>
-          <li><a href="/?type=apartments">Квартиры посуточно</a></li>
-          <li><a href="/?type=cottages">Коттеджи</a></li>
-          <li><a href="/?type=hourly">Почасовая аренда</a></li>
+          <li><a href="{{ route('listings.apartments') }}">Квартиры посуточно</a></li>
+          <li><a href="{{ route('listings.cottages') }}">Коттеджи</a></li>
+          <li><a href="{{ route('listings.hourly') }}">Почасовая аренда</a></li>
 
         </ul>
       </div>

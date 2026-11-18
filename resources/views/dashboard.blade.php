@@ -740,21 +740,14 @@
   }
   .sidebar-menu {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    margin: 0 -8px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .sidebar-menu::-webkit-scrollbar {
-    display: none;
+    padding-bottom: 4px;
+    margin: 0;
   }
   .sidebar-menu li {
     margin-bottom: 0;
     flex-shrink: 0;
-    scroll-snap-align: start;
   }
   .sidebar-menu li a {
     white-space: nowrap !important;
@@ -1830,7 +1823,7 @@
     </aside>
 
     <!-- MAIN PANEL -->
-    <main class="main-panel">
+    <div class="main-panel">
       
       <!-- PANE 1: LISTINGS -->
       <div id="pane-listings" class="tab-pane active">
@@ -1838,18 +1831,18 @@
         <div class="stats-row" style="margin-bottom: 28px;">
           <div class="stat-card">
             <span class="stat-card-title">Объявления</span>
-            <span class="stat-card-val" id="card-stats-total">3</span>
+            <span class="stat-card-val" id="card-stats-total">0</span>
             <span class="stat-card-trend">Всего на платформе</span>
           </div>
           <div class="stat-card">
             <span class="stat-card-title">Просмотры</span>
-            <span class="stat-card-val" id="card-stats-views">1 660</span>
-            <span class="stat-card-trend">+12% за неделю</span>
+            <span class="stat-card-val" id="card-stats-views">0</span>
+            <span class="stat-card-trend" id="card-stats-views-trend">За все время</span>
           </div>
           <div class="stat-card">
             <span class="stat-card-title">Клики на телефон</span>
-            <span class="stat-card-val" id="card-stats-clicks">181</span>
-            <span class="stat-card-trend">+5% за неделю</span>
+            <span class="stat-card-val" id="card-stats-clicks">0</span>
+            <span class="stat-card-trend" id="card-stats-clicks-trend">За все время</span>
           </div>
         </div>
 
@@ -2087,7 +2080,7 @@
               </div>
               <div class="profile-field" style="grid-column: 1 / -1;">
                 <label for="profile-unp">УНП (для ИП/Юрлиц/Самозанятых)</label>
-                <input type="text" id="profile-unp" placeholder="9 символов (например, AB1234567)" maxlength="9" oninput="validateUNPField(this.value)">
+                <input type="text" id="profile-unp" placeholder="9 цифр (например, 193456789)" maxlength="9" oninput="validateUNPField(this.value)">
                 <div id="unp-validator-status" class="unp-status invalid" style="display: none;">
                   <span id="unp-status-icon">✕</span> <span id="unp-status-text">Неверный формат. Требуется 9 цифр или 2 буквы + 7 цифр.</span>
                 </div>
@@ -2346,7 +2339,7 @@
         </div>
       </div>
 
-    </main>
+    </div>
 
   </div>
 </div>

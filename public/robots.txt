@@ -5,8 +5,6 @@ Disallow: /listings/create
 Disallow: /login
 Disallow: /register
 Disallow: /privacy
-Disallow: /storage/
-Disallow: /storage
 
 # Блокируем системные пути Laravel / WP / старые скрипты
 Disallow: /index.php/
@@ -14,7 +12,6 @@ Disallow: /index.php/
 # Блокируем мусорные параметры фильтрации, сортировки и избранного
 Disallow: /*?*open_filters=
 Disallow: /*?*favorites=
-Disallow: /*?*type=
 
 # Разрешаем индексацию пагинации (необязательно, но полезно для обхода глубоких объявлений)
 Allow: /*?page=

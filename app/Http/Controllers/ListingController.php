@@ -1311,8 +1311,12 @@ class ListingController extends Controller
         $seoDescription = $landingPage['description'] ?? 'Каталог квартир на сутки по Беларуси: Минск и регионы, цены, фото, телефон хозяина. Откройте карту и бронируйте напрямую.';
         $seoH1 = $landingPage['h1'] ?? 'Квартиры посуточно в Беларуси';
         $seoCategory = 'apartments';
+        $breadcrumbs = [
+            ['url' => '/', 'title' => 'Главная'],
+            ['url' => null, 'title' => 'Квартиры посуточно']
+        ];
 
-        return $this->renderCatalogView($request, compact('listings', 'seoTitle', 'seoDescription', 'seoH1', 'seoCategory', 'landingPage'));
+        return $this->renderCatalogView($request, compact('listings', 'seoTitle', 'seoDescription', 'seoH1', 'seoCategory', 'landingPage', 'breadcrumbs'));
     }
 
     /**
@@ -1339,8 +1343,12 @@ class ListingController extends Controller
         $seoDescription = $landingPage['description'] ?? 'Дома, коттеджи и усадьбы на сутки по Беларуси: цены, фото, вместимость. Для выходных и компании — прямой контакт с хозяином.';
         $seoH1 = $landingPage['h1'] ?? 'Аренда домов и коттеджей на сутки';
         $seoCategory = 'cottages';
+        $breadcrumbs = [
+            ['url' => '/', 'title' => 'Главная'],
+            ['url' => null, 'title' => 'Коттеджи на сутки']
+        ];
 
-        return $this->renderCatalogView($request, compact('listings', 'seoTitle', 'seoDescription', 'seoH1', 'seoCategory', 'landingPage'));
+        return $this->renderCatalogView($request, compact('listings', 'seoTitle', 'seoDescription', 'seoH1', 'seoCategory', 'landingPage', 'breadcrumbs'));
     }
 
     /**
@@ -1431,8 +1439,12 @@ class ListingController extends Controller
         $seoDescription = 'Снять квартиру на несколько часов или почасово в Минске и городах Беларуси. Прямые контакты хозяев, актуальные цены.';
         $seoH1 = 'Почасовая аренда квартир в Беларуси';
         $seoCategory = 'hourly';
+        $breadcrumbs = [
+            ['url' => '/', 'title' => 'Главная'],
+            ['url' => null, 'title' => 'Квартиры на часы']
+        ];
 
-        return $this->renderCatalogView($request, compact('listings', 'seoTitle', 'seoDescription', 'seoH1', 'seoCategory'));
+        return $this->renderCatalogView($request, compact('listings', 'seoTitle', 'seoDescription', 'seoH1', 'seoCategory', 'breadcrumbs'));
     }
 
     /**
@@ -1553,15 +1565,24 @@ class ListingController extends Controller
             return redirect()->route('home')->with('error', 'Объявление не найдено');
         }
 
-        // Выбираем похожие объявления в том же городе с учетом цены
+        // Выбираем похожие объявления в том же городе с учетом типа, района и цены
         try {
             $currentPrice = (float) $listing->price;
             $priceMin = $currentPrice * 0.7;
             $priceMax = $currentPrice * 1.3;
 
-            $similarListings = Listing::where('city', $listing->city)
+            $similarQuery = Listing::where('city', $listing->city)
                 ->where('id', '!=', $listing->id)
-                ->where('status', 'active')
+                ->where('status', 'active');
+
+            if (!empty($listing->type)) {
+                $similarQuery->orderByRaw('CASE WHEN type = ? THEN 0 ELSE 1 END', [$listing->type]);
+            }
+            if (!empty($listing->district)) {
+                $similarQuery->orderByRaw('CASE WHEN district = ? THEN 0 ELSE 1 END', [$listing->district]);
+            }
+
+            $similarListings = $similarQuery
                 ->orderByRaw('CASE WHEN price BETWEEN ? AND ? THEN 0 ELSE 1 END', [$priceMin, $priceMax])
                 ->inRandomOrder()
                 ->take(4)
@@ -1582,7 +1603,7 @@ class ListingController extends Controller
                             'rating' => $r->rating,
                             'content' => $r->comment,
                             'date' => $r->created_at->format('d.m.Y'),
-                            'elapsed' => $r->created_at->diffForHumans(),
+                            'elapsed' => $r->created_at->locale('ru')->diffForHumans(),
                         ];
                     })->toArray();
                 }
@@ -1665,7 +1686,7 @@ class ListingController extends Controller
                     'rating' => $review->rating,
                     'content' => $review->comment,
                     'date' => $review->created_at->format('d.m.Y'),
-                    'elapsed' => $review->created_at->diffForHumans(),
+                    'elapsed' => $review->created_at->locale('ru')->diffForHumans(),
                 ]
             ]);
         } catch (\Exception $e) {

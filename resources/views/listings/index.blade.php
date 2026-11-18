@@ -62,11 +62,28 @@
 .main { display: flex; min-height: calc(100vh - 156px); }
 
 /* ===== LISTINGS ===== */
-.listings { flex: 1; padding: 28px 32px; min-width: 0; }
-.top-info { font-size: 14px; color: var(--slate-900); margin-bottom: 24px; }
+.listings { flex: 1; padding: 28px 24px; min-width: 0; overflow-x: hidden; }
+.top-info-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.top-info { font-size: 14px; color: var(--slate-900); margin-bottom: 0; }
 .top-info span { text-decoration: underline; cursor: pointer; }
+.sort-select-wrap { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--slate-700); }
+.sort-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230f172a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 7px 32px 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--slate-900);
+  cursor: pointer;
+}
 
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 
 /* ===== CARD ===== */
 .card {
@@ -80,6 +97,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 .card:hover {
   transform: translateY(-4px);
@@ -879,7 +898,7 @@
   color: #78350f;
 }
 
-@media (max-width: 1200px), (max-width: 991px) {
+@media (max-width: 1480px), (max-width: 991px) {
   .map-controls-toolbar .btn-lbl {
     display: none;
   }
@@ -3391,7 +3410,18 @@
         </p>
       </div>
     @endif
-    <p class="top-info"><b id="listings-count" style="font-weight: normal;">0 вариантов</b> в пределах карты · <span>Цены без скрытых сборов</span></p>
+    <div class="top-info-bar">
+      <p class="top-info"><b id="listings-count" style="font-weight: normal;">0 вариантов</b> в пределах карты · <span>Цены без скрытых сборов</span></p>
+      <div class="sort-select-wrap">
+        <label for="listings-sort">Сортировка:</label>
+        <select id="listings-sort" class="sort-select" onchange="applyFilters(true)">
+          <option value="default">Рекомендуемые</option>
+          <option value="price_asc">Сначала дешевле</option>
+          <option value="price_desc">Сначала дороже</option>
+          <option value="area_desc">По площади</option>
+        </select>
+      </div>
+    </div>
 
 
 
@@ -4144,7 +4174,7 @@
 </button>
 
 <!-- CITY SELECTION MODAL -->
-<div class="modal-backdrop" id="city-modal" onclick="closeCityModal()" style="z-index: 3100;">
+<div class="modal-backdrop" id="city-modal" role="dialog" aria-modal="true" aria-label="Выбор города" onclick="closeCityModal()" style="z-index: 3100;">
   <div class="filter-modal-card" id="city-modal-card" onclick="event.stopPropagation()" style="max-width: 600px; width: 95%; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden;">
     <div class="modal-grab-bar"></div>
     <div class="filter-modal-header" style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
@@ -4241,7 +4271,7 @@
 </div>
 
 <!-- TARIFFS MODAL -->
-<div class="modal-backdrop" id="tariffs-modal" onclick="closeTariffsModal()" style="z-index: 3100;">
+<div class="modal-backdrop" id="tariffs-modal" role="dialog" aria-modal="true" aria-label="Тарифы размещения объявлений" onclick="closeTariffsModal()" style="z-index: 3100;">
   <div class="filter-modal-card" id="tariffs-modal-card" onclick="event.stopPropagation()" style="max-width: 800px; width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
     <div class="modal-grab-bar"></div>
     <div class="filter-modal-header" style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
@@ -4316,7 +4346,7 @@
 </div>
 
 <!-- ADVANCED FILTERS MODAL -->
-<div class="modal-backdrop" id="filter-modal" onclick="closeFilterModal()">
+<div class="modal-backdrop" id="filter-modal" role="dialog" aria-modal="true" aria-label="Фильтры поиска" onclick="closeFilterModal()">
   <div class="filter-modal-card" id="filter-modal-card" data-active-type="apartments" onclick="event.stopPropagation()">
     <div class="modal-grab-bar"></div>
     <div class="filter-modal-header">
@@ -5054,19 +5084,43 @@ window.togglePoiLayer = togglePoiLayer;
 
 // Points of Interest (Metro, Malls, Landmarks, Stations)
 const MAP_POIS = [
-  // Метро Минска
+  // Метро Минска (Московская, Автозаводская, Зеленолужская линии)
   { name: 'ст. м. Немига', type: 'metro', coords: [53.9056, 27.5539], icon: '🚇', desc: 'Автозаводская линия' },
   { name: 'ст. м. Октябрьская', type: 'metro', coords: [53.9015, 27.5613], icon: '🚇', desc: 'Московская линия (Переход)' },
+  { name: 'ст. м. Купаловская', type: 'metro', coords: [53.9008, 27.5619], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Площадь Ленина', type: 'metro', coords: [53.8931, 27.5480], icon: '🚇', desc: 'Московская линия (Ж/Д Вокзал)' },
   { name: 'ст. м. Площадь Победы', type: 'metro', coords: [53.9085, 27.5746], icon: '🚇', desc: 'Московская линия' },
   { name: 'ст. м. Площадь Якуба Коласа', type: 'metro', coords: [53.9160, 27.5830], icon: '🚇', desc: 'Московская линия' },
-  { name: 'ст. м. Вокзальная', type: 'metro', coords: [53.8906, 27.5503], icon: '🚇', desc: 'Ж/Д Вокзал' },
+  { name: 'ст. м. Вокзальная', type: 'metro', coords: [53.8906, 27.5503], icon: '🚇', desc: 'Зеленолужская линия (Ж/Д Вокзал)' },
   { name: 'ст. м. Академия Наук', type: 'metro', coords: [53.9214, 27.5991], icon: '🚇', desc: 'Московская линия' },
   { name: 'ст. м. Парк Челюскинцев', type: 'metro', coords: [53.9242, 27.6136], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Московская', type: 'metro', coords: [53.9279, 27.6278], icon: '🚇', desc: 'Московская линия' },
   { name: 'ст. м. Восток', type: 'metro', coords: [53.9344, 27.6513], icon: '🚇', desc: 'Возле ТРЦ Dana Mall' },
+  { name: 'ст. м. Борисовский тракт', type: 'metro', coords: [53.9386, 27.6661], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Уручье', type: 'metro', coords: [53.9453, 27.6878], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Институт Культуры', type: 'metro', coords: [53.8856, 27.5390], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Грушевка', type: 'metro', coords: [53.8867, 27.5147], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Михалово', type: 'metro', coords: [53.8767, 27.4969], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Петровщина', type: 'metro', coords: [53.8646, 27.4858], icon: '🚇', desc: 'Московская линия' },
+  { name: 'ст. м. Малиновка', type: 'metro', coords: [53.8497, 27.4748], icon: '🚇', desc: 'Московская линия' },
   { name: 'ст. м. Пушкинская', type: 'metro', coords: [53.9096, 27.4965], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Спортивная', type: 'metro', coords: [53.9085, 27.4795], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Кунцевщина', type: 'metro', coords: [53.9063, 27.4541], icon: '🚇', desc: 'Автозаводская линия' },
   { name: 'ст. м. Каменная Горка', type: 'metro', coords: [53.9062, 27.4370], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Молодёжная', type: 'metro', coords: [53.9065, 27.5223], icon: '🚇', desc: 'Автозаводская линия' },
   { name: 'ст. м. Фрунзенская', type: 'metro', coords: [53.9057, 27.5392], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Первомайская', type: 'metro', coords: [53.8939, 27.5706], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Пролетарская', type: 'metro', coords: [53.8898, 27.5861], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Тракторный завод', type: 'metro', coords: [53.8900, 27.6146], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Партизанская', type: 'metro', coords: [53.8758, 27.6289], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Автозаводская', type: 'metro', coords: [53.8691, 27.6486], icon: '🚇', desc: 'Автозаводская линия' },
+  { name: 'ст. м. Могилёвская', type: 'metro', coords: [53.8619, 27.6744], icon: '🚇', desc: 'Автозаводская линия' },
   { name: 'ст. м. Юбилейная площадь', type: 'metro', coords: [53.9042, 27.5396], icon: '🚇', desc: 'Зеленолужская линия' },
+  { name: 'ст. м. Площадь Франтишка Богушевича', type: 'metro', coords: [53.8965, 27.5380], icon: '🚇', desc: 'Зеленолужская линия' },
+  { name: 'ст. м. Ковальская Слобода', type: 'metro', coords: [53.8770, 27.5496], icon: '🚇', desc: 'Зеленолужская линия' },
+  { name: 'ст. м. Аэродромная', type: 'metro', coords: [53.8679, 27.5518], icon: '🚇', desc: 'Зеленолужская линия (Минск Мир)' },
+  { name: 'ст. м. Неморшанский Сад', type: 'metro', coords: [53.8548, 27.5471], icon: '🚇', desc: 'Зеленолужская линия' },
+  { name: 'ст. м. Слуцкий Гостинец', type: 'metro', coords: [53.8442, 27.5395], icon: '🚇', desc: 'Зеленолужская линия' },
 
   // Вокзалы
   { name: 'Минск-Пассажирский (Ж/Д)', type: 'station', coords: [53.8903, 27.5507], icon: '🚉', desc: 'Главный железнодорожный вокзал' },
@@ -7127,13 +7181,59 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchPriceLabel) searchPriceLabel.textContent = label;
   }
 
+  // Парсинг сортировки и дополнительных параметров из URL
+  const sortParam = urlParams.get('sort');
+  if (sortParam) {
+    const sortEl = document.getElementById('listings-sort');
+    if (sortEl) sortEl.value = sortParam;
+  }
+
+  const bedsParam = urlParams.get('beds');
+  if (bedsParam && !isNaN(parseInt(bedsParam, 10))) {
+    filterBeds = parseInt(bedsParam, 10);
+    const bedBtn = document.querySelector(`#row-beds .rb-btn[onclick*="setRoomFilter('beds', ${filterBeds}"]`);
+    if (bedBtn) {
+      document.querySelectorAll('#row-beds .rb-btn').forEach(b => b.classList.remove('active'));
+      bedBtn.classList.add('active');
+    }
+  }
+
+  const bathsParam = urlParams.get('bathrooms');
+  if (bathsParam && !isNaN(parseInt(bathsParam, 10))) {
+    filterBathrooms = parseInt(bathsParam, 10);
+    const bathBtn = document.querySelector(`#row-bathrooms .rb-btn[onclick*="setRoomFilter('bathrooms', ${filterBathrooms}"]`);
+    if (bathBtn) {
+      document.querySelectorAll('#row-bathrooms .rb-btn').forEach(b => b.classList.remove('active'));
+      bathBtn.classList.add('active');
+    }
+  }
+
+  const tagsParam = urlParams.get('tags');
+  if (tagsParam) {
+    const tagList = tagsParam.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+    document.querySelectorAll('.filter-checkbox-item').forEach(cb => {
+      const t = (cb.getAttribute('data-tag') || '').toLowerCase().trim();
+      if (tagList.includes(t)) cb.checked = true;
+    });
+  }
+
   if (urlParams.get('open_filters') === '1') {
     if (typeof openFilterModal === 'function') {
       openFilterModal();
     }
   }
 
-  applyFilters();
+  // Close modals on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeFilterModal();
+      closeCityModal();
+      closeTariffsModal();
+    }
+  });
+
+  // Preserve server-rendered currentPage (e.g. /minsk/page-2) on initial load
+  applyFilters(false);
 });
 
 // Advanced Filter Logic
@@ -7673,6 +7773,66 @@ function applyFilters(resetPage = true, fitMapBounds = false, checkMapBounds = f
   });
 
   const visibleCount = matchingCards.length;
+
+  // Сортировка отфильтрованных карточек
+  const sortSelect = document.getElementById('listings-sort');
+  const sortMode = sortSelect ? sortSelect.value : 'default';
+  if (sortMode !== 'default' && matchingCards.length > 1) {
+    matchingCards.sort(function(a, b) {
+      if (sortMode === 'price_asc') {
+        return (parseFloat(a.getAttribute('data-price')) || 0) - (parseFloat(b.getAttribute('data-price')) || 0);
+      } else if (sortMode === 'price_desc') {
+        return (parseFloat(b.getAttribute('data-price')) || 0) - (parseFloat(a.getAttribute('data-price')) || 0);
+      } else if (sortMode === 'area_desc') {
+        const idA = a.getAttribute('data-id');
+        const idB = b.getAttribute('data-id');
+        const areaA = (apartmentsData && apartmentsData[idA]) ? (apartmentsData[idA].area || 0) : 0;
+        const areaB = (apartmentsData && apartmentsData[idB]) ? (apartmentsData[idB].area || 0) : 0;
+        return areaB - areaA;
+      }
+      return 0;
+    });
+    const gridContainer = document.getElementById('listings-grid');
+    if (gridContainer) {
+      matchingCards.forEach(function(card) {
+        gridContainer.appendChild(card);
+      });
+    }
+  }
+
+  // Синхронизация активных фильтров с URL (чтобы фильтры сохранялись при перезагрузке страницы)
+  if (resetPage) {
+    try {
+      const currentUrl = new URL(window.location.href);
+      const rawMin = document.getElementById('price-min') ? document.getElementById('price-min').value.trim() : '';
+      const rawMax = document.getElementById('price-max') ? document.getElementById('price-max').value.trim() : '';
+      if (rawMin && parseFloat(rawMin) > 0) currentUrl.searchParams.set('price_min', rawMin);
+      else currentUrl.searchParams.delete('price_min');
+      if (rawMax && parseFloat(rawMax) > 0 && parseFloat(rawMax) < 999999) currentUrl.searchParams.set('price_max', rawMax);
+      else currentUrl.searchParams.delete('price_max');
+
+      if (selectedGuests && selectedGuests > 0) currentUrl.searchParams.set('guests', selectedGuests);
+      else currentUrl.searchParams.delete('guests');
+
+      if (filterBedrooms && filterBedrooms > 0) currentUrl.searchParams.set('rooms', filterBedrooms);
+      else currentUrl.searchParams.delete('rooms');
+
+      if (filterBeds && filterBeds > 0) currentUrl.searchParams.set('beds', filterBeds);
+      else currentUrl.searchParams.delete('beds');
+
+      if (filterBathrooms && filterBathrooms > 0) currentUrl.searchParams.set('bathrooms', filterBathrooms);
+      else currentUrl.searchParams.delete('bathrooms');
+
+      if (checkedTags.length > 0) currentUrl.searchParams.set('tags', checkedTags.join(','));
+      else currentUrl.searchParams.delete('tags');
+
+      if (sortMode && sortMode !== 'default') currentUrl.searchParams.set('sort', sortMode);
+      else currentUrl.searchParams.delete('sort');
+
+      const cleanPath = currentUrl.pathname.replace(/\/page-\d+/, '') || '/';
+      window.history.replaceState({}, '', cleanPath + (currentUrl.searchParams.toString() ? '?' + currentUrl.searchParams.toString() : ''));
+    } catch (err) {}
+  }
 
   // Обновляем счетчик вариантов на странице
   const countEl = document.getElementById('listings-count');

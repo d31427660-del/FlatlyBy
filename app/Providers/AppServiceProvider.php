@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        app()->setLocale('ru');
+        \Carbon\Carbon::setLocale('ru');
+
         view()->composer(['layouts.app', 'listings.index'], function ($view) {
             try {
                 $activeCities = \App\Models\Listing::where('status', 'active')

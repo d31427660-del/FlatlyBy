@@ -1209,23 +1209,28 @@
     @endphp
     @foreach($citiesRussianNames as $citySlug => $cityName)
       @if(isset($seoPagesConfig[$citySlug]))
+        @php
+          $filteredCityPages = collect($seoPagesConfig[$citySlug])->reject(function($pageData, $tagSlug) {
+              return in_array($tagSlug, ['_main', 'u-vokzala', 'kvartiry-na-sutki-u-metro']);
+          });
+        @endphp
         <div style="background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 24px; text-align: left; box-shadow: 0 4px 16px rgba(0,0,0,0.01);">
           <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; color: var(--slate-900); margin: 0 0 16px 0; border-bottom: 2px solid var(--amber); padding-bottom: 8px; display: inline-block;">
-            {{ $cityName }}
+            <a href="/{{ $citySlug }}" style="color: inherit; text-decoration: none;">{{ $cityName }}</a>
           </h3>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-            @foreach($seoPagesConfig[$citySlug] as $tagSlug => $pageData)
+            @foreach($filteredCityPages as $tagSlug => $pageData)
               <li class="{{ $loop->iteration > 3 ? 'collapsed-link collapsed' : '' }}">
                 <a href="/{{ $citySlug }}/{{ $tagSlug }}" style="font-size: 14px; font-weight: 600; color: var(--slate-700); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s;" onmouseover="this.style.color='var(--amber-dark)'" onmouseout="this.style.color='var(--slate-700)'">
-                  <span style="color: var(--amber-dark); font-size: 12px;">⚡</span>
+                  <span style="color: var(--amber-dark); font-size: 12px;" aria-hidden="true">⚡</span>
                   {{ $pageData['h1'] }}
                 </a>
               </li>
             @endforeach
           </ul>
-          @if(count($seoPagesConfig[$citySlug]) > 3)
-            <button class="show-more-links-btn" onclick="toggleMobileLinks(this, '{{ $citySlug }}')">
-              Показать все ({{ count($seoPagesConfig[$citySlug]) }})
+          @if($filteredCityPages->count() > 3)
+            <button type="button" class="show-more-links-btn" aria-expanded="false" onclick="toggleMobileLinks(this, '{{ $citySlug }}')">
+              Показать все ({{ $filteredCityPages->count() }})
             </button>
           @endif
         </div>
@@ -1369,9 +1374,9 @@
     <div class="faq-wrap">
       <!-- FAQ 1 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Как забронировать жилье на Flatly.by?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1382,9 +1387,9 @@
 
       <!-- FAQ 2 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Правда ли, что размещение объявлений бесплатно?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1395,9 +1400,9 @@
 
       <!-- FAQ 3 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Какая комиссия сервиса для гостей и хозяев?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1408,9 +1413,9 @@
 
       <!-- FAQ 4 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Как связаться с владельцем выбранного жилья?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1421,9 +1426,9 @@
 
       <!-- FAQ 5 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Что делать, если владелец не отвечает на звонки или сообщения?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1434,9 +1439,9 @@
 
       <!-- FAQ 6 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Какие документы необходимы при заселении?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1447,9 +1452,9 @@
 
       <!-- FAQ 7 -->
       <div class="faq-item">
-        <button class="faq-trigger" onclick="toggleFaq(this)">
+        <button type="button" class="faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-question">Что такое верификация по УНП для арендодателей?</span>
-          <x-solar-alt-arrow-down-linear class="faq-icon" />
+          <x-solar-alt-arrow-down-linear class="faq-icon" aria-hidden="true" />
         </button>
         <div class="faq-panel">
           <div class="faq-content">
@@ -1462,16 +1467,16 @@
 </div>
 
 <!-- VIP HOW-TO MODAL -->
-<div class="lightbox-overlay" id="vip-howto-modal" onclick="closeVipHowtoModal(event)" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+<div class="lightbox-overlay" id="vip-howto-modal" role="dialog" aria-modal="true" aria-labelledby="vip-howto-title" onclick="closeVipHowtoModal(event)" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
   <div class="modal-card-dialog" onclick="event.stopPropagation()" style="background: #ffffff; border-radius: 24px; max-width: 520px; width: 100%; padding: 32px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); position: relative; color: var(--text-main); animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
-    <button onclick="closeVipHowtoModal(event)" aria-label="Закрыть" style="position: absolute; top: 20px; right: 20px; background: #F1F5F9; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 20px; cursor: pointer; color: var(--slate-900); display: flex; align-items: center; justify-content: center; transition: background 0.2s;">&times;</button>
+    <button type="button" onclick="closeVipHowtoModal(event)" aria-label="Закрыть" style="position: absolute; top: 20px; right: 20px; background: #F1F5F9; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 20px; cursor: pointer; color: var(--slate-900); display: flex; align-items: center; justify-content: center; transition: background 0.2s;">&times;</button>
     
     <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
-      <div style="width: 48px; height: 48px; border-radius: 16px; background: rgba(245, 166, 35, 0.15); color: #D97706; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+      <div style="width: 48px; height: 48px; border-radius: 16px; background: rgba(245, 166, 35, 0.15); color: #D97706; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;" aria-hidden="true">
         🌟
       </div>
       <div>
-        <h3 style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--slate-900); margin: 0; line-height: 1.2;">Как попасть в «Рекомендуемые»?</h3>
+        <h3 id="vip-howto-title" style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--slate-900); margin: 0; line-height: 1.2;">Как попасть в «Рекомендуемые»?</h3>
         <p style="font-size: 13px; color: var(--gray-text); margin: 4px 0 0 0;">Премиум-размещение в самом верху главной страницы</p>
       </div>
     </div>
@@ -1581,15 +1586,19 @@ function toggleFaq(button) {
     if (otherItem !== item) {
       otherItem.classList.remove('active');
       otherItem.querySelector('.faq-panel').style.maxHeight = null;
+      const otherBtn = otherItem.querySelector('.faq-trigger');
+      if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
     }
   });
   
   if (isActive) {
     item.classList.remove('active');
     panel.style.maxHeight = null;
+    button.setAttribute('aria-expanded', 'false');
   } else {
     item.classList.add('active');
     panel.style.maxHeight = panel.scrollHeight + "px";
+    button.setAttribute('aria-expanded', 'true');
   }
 }
 
@@ -1648,6 +1657,15 @@ function closeVipHowtoModal(event) {
     document.body.style.overflow = '';
   }
 }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('vip-howto-modal');
+    if (modal && modal.style.display === 'flex') {
+      closeVipHowtoModal();
+    }
+  }
+});
 
 // Mobile sections toggle logic
 function toggleMobileLinks(btn, citySlug) {

@@ -632,7 +632,7 @@ function openDetails(id, slug = null) {
 
 // Избранное
 function toggleFav(btn) {
-  event.stopPropagation();
+  if (typeof event !== 'undefined' && event) event.stopPropagation();
   const card = btn.closest('.card');
   if (!card) return;
   const id = parseInt(card.getAttribute('data-id'), 10);
@@ -640,31 +640,48 @@ function toggleFav(btn) {
   
   if (isAdded) {
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+    btn.setAttribute('aria-label', 'Удалить из избранного');
     showToast('❤️ Добавлено в избранное');
   } else {
     btn.classList.remove('active');
+    btn.setAttribute('aria-pressed', 'false');
+    btn.setAttribute('aria-label', 'Добавить в избранное');
     showToast('Удалено из избранного');
     
+    // Немедленно помечаем карточку удаляемой и обновляем счетчик и URL
+    card.setAttribute('data-removing', '1');
+    updateFavoritesPageCount();
+    
     // Анимация удаления карточки
-    card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, margin-bottom 0.4s ease';
+    card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease';
     card.style.opacity = '0';
     card.style.transform = 'scale(0.9) translateY(20px)';
     
     setTimeout(() => {
       card.remove();
       updateFavoritesPageCount();
-    }, 400);
+    }, 350);
   }
 }
 
 function updateFavoritesPageCount() {
-  const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.card:not([data-removing="1"])');
   const count = cards.length;
   
   const countTitleEl = document.getElementById('favorites-count-title');
   if (countTitleEl) {
     countTitleEl.textContent = getPluralAnnouncements(count);
   }
+  
+  // Синхронизируем URL ?ids=... чтобы перезагрузка не возвращала удаленные карточки
+  try {
+    const favs = getFavorites();
+    const newUrl = favs.length > 0
+      ? "{{ route('listings.favorites') }}?ids=" + encodeURIComponent(favs.join(','))
+      : "{{ route('listings.favorites') }}?ids=";
+    window.history.replaceState({}, '', newUrl);
+  } catch (e) {}
   
   if (count === 0) {
     const gridEl = document.querySelector('.favorites-grid');

@@ -156,14 +156,14 @@ li {
 <div class="legal-container">
   
   <!-- Left Navigation Sidebar -->
-  <aside class="legal-nav">
-    <button class="legal-nav-btn active" onclick="switchSection(this, 'privacy')">Политика конфиденциальности</button>
-    <button class="legal-nav-btn" onclick="switchSection(this, 'offer')">Публичная оферта</button>
-    <button class="legal-nav-btn" onclick="switchSection(this, 'cookies')">Политика файлов Cookie</button>
+  <aside class="legal-nav" aria-label="Разделы правовых документов">
+    <button type="button" id="privacy" class="legal-nav-btn active" onclick="switchSection(this, 'privacy')">Политика конфиденциальности</button>
+    <button type="button" id="offer" class="legal-nav-btn" onclick="switchSection(this, 'offer')">Публичная оферта</button>
+    <button type="button" id="cookies" class="legal-nav-btn" onclick="switchSection(this, 'cookies')">Политика файлов Cookie</button>
   </aside>
 
   <!-- Right Content Card -->
-  <main class="legal-content-card">
+  <div class="legal-content-card">
     
     <!-- 1. ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
     <section id="sec-privacy" class="legal-section active">
@@ -309,7 +309,7 @@ li {
       <p>По любым вопросам, касающимся обработки файлов cookie и персональных данных, вы можете обращаться к ИП Лойко Евгению Юрьевичу по e-mail: <strong>loyko1012@gmail.com</strong>.</p>
     </section>
 
-  </main>
+  </div>
 </div>
 @endsection
 

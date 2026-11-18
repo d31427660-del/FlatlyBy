@@ -206,12 +206,6 @@ Route::post('/login', function(Request $request) {
         return response()->json(['success' => true]);
     }
 
-    // Support default login with seed user Natalia
-    if ($user && $email === 'natalia@flatly.by' && ($password === 'password' || $password === '')) {
-        session(['logged_in' => true, 'user_id' => $user->id]);
-        return response()->json(['success' => true]);
-    }
-
     return response()->json([
         'success' => false,
         'message' => 'Неверный адрес электронной почты или пароль.'
@@ -463,8 +457,11 @@ Route::get('/payments/success', [PaymentController::class, 'success'])->name('pa
 Route::get('/payments/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
 Route::post('/payments/webhook', [PaymentController::class, 'webhook'])->name('payments.webhook');
 
-// Диагностический маршрут для проверки таблиц и настроек монетизации на хостинге
+// Диагностический маршрут для проверки таблиц и настроек монетизации на хостинге (только для администратора)
 Route::get('/debug-monetization', function() {
+    if (!session('admin_logged_in')) {
+        abort(403, 'Доступ запрещен.');
+    }
     $migrateResult = null;
     if (request()->has('migrate')) {
         try {

@@ -233,10 +233,12 @@
       $slug = \Illuminate\Support\Str::slug($transliterated);
   }
 
-  $displayAddress = $item->address;
+  $displayAddress = $item->address ?? '';
   if (!empty($city) && str_starts_with($displayAddress, $city . ', ')) {
       $displayAddress = substr($displayAddress, strlen($city . ', '));
   }
+  $displayAddress = preg_replace('/\b([\p{L}\d-]+)\s+\1\b/iu', '$1', $displayAddress);
+  $beds = max(1, (int)($beds ?: 1));
 @endphp
 
 <div class="card {{ (($item->featured ?? false) || $item->id == 1) ? 'highlighted' : '' }}" onclick="openDetails({{ $item->id }}, '{{ $slug }}')" 
@@ -308,7 +310,7 @@
       @endif
     </div>
 
-    <button class="fav-btn" onclick="toggleFav(this)" aria-label="Добавить квартиру в избранное">
+    <button type="button" class="fav-btn" onclick="toggleFav(this)" aria-label="Добавить в избранное" aria-pressed="false">
       <x-solar-heart-linear />
     </button>
   </div>
@@ -327,7 +329,7 @@
       <svg class="metro-icon" viewBox="0 0 24 24"><path d="M2 4h4l6 10 6-10h4v16h-3V8l-7 11-7-11v12H2z" fill="var(--amber-dark)"/></svg>
       <span>{{ $item->nearest_metro }}</span>
     </div>
-    @else
+    @elseif(mb_strtolower($city) === 'минск' && !in_array($item->type, ['cottage', 'agrotourism']))
     <div class="card-metro-row" style="color: #4A5568;">
       <svg class="metro-icon" viewBox="0 0 24 24"><path d="M2 4h4l6 10 6-10h4v16h-3V8l-7 11-7-11v12H2z" fill="#4A5568"/></svg>
       <span>Метро не указано</span>
@@ -344,7 +346,7 @@
       </div>
       <div class="price-divider"></div>
       <div class="price-section right">
-        @if($item->weekend_price > 0)
+        @if($item->weekend_price > 0 && $item->weekend_price < $item->price)
           <div class="price-label">
             <span class="price-amount price-val" data-base-price="{{ $item->weekend_price }}">{{ $item->weekend_price }} Б̶</span>
           </div>

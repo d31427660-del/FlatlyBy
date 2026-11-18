@@ -47,8 +47,10 @@ input[type=text], input[type=tel], input[type=number], input[type=email], input[
   width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 10px;
   padding: 11px 14px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--slate-900);
   outline: none; transition: border-color .15s;
-  -webkit-appearance: none; appearance: none;
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  box-sizing: border-box;
 }
+select::-ms-expand { display: none; }
 input:focus, select:focus, textarea:focus { border-color: var(--amber); }
 input::placeholder, textarea::placeholder { color: #B0B0C0; }
 
@@ -1115,7 +1117,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           </div>
         </div>
 
-        <div class="fc-section" style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;">
+        <div class="fc-section" id="payment-methods-container" style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;">
           <div class="section-label" style="margin-bottom:14px;">Способы оплаты <span class="req">*</span></div>
           <div style="display:flex;flex-direction:column;gap:10px;">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;"><input type="checkbox" name="payment_method" value="Наличными" checked> Наличными</label>
@@ -1159,7 +1161,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           </div>
           <div class="field">
             <label class="label">УНП (для ИП/Юрлиц/Самозанятых)</label>
-            <input type="text" placeholder="9 символов (например, AB1234567)" id="unp-input" value="{{ $user->unp ?? '' }}" maxlength="9">
+            <input type="text" placeholder="9 цифр (например, 193456789)" id="unp-input" value="{{ $user->unp ?? '' }}" maxlength="9">
           </div>
         </div>
 
@@ -1184,7 +1186,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
           <div style="display:flex;align-items:flex-start;gap:10px;">
             <input type="checkbox" id="agree" style="width:16px;height:16px;margin-top:2px;flex-shrink:0;">
             <label for="agree" style="font-size:13px;color:var(--slate-900);line-height:1.6;cursor:pointer;">
-              Я согласен с правилами размещения и подтверждаю, что информация в объявлении достоверна
+              Я согласен с <a href="{{ route('rules') }}" target="_blank" rel="noopener" style="color:var(--amber-dark);text-decoration:underline;font-weight:600;">правилами размещения</a> и подтверждаю, что информация в объявлении достоверна
             </label>
           </div>
         </div>
@@ -1397,11 +1399,25 @@ function adjustFormFieldsForType(type) {
   // Show/Hide fields
   document.getElementById('plot-area-field').style.display = isCottage ? 'block' : 'none';
   document.getElementById('studio-check-wrap').style.display = isCottage ? 'none' : 'flex';
+  const studioCheck = document.getElementById('studio-check');
+  const roomsInput = document.getElementById('rooms-input');
+  if (isCottage && roomsInput) {
+    if (studioCheck) studioCheck.checked = false;
+    roomsInput.disabled = false;
+    roomsInput.style.opacity = '1';
+  }
   document.getElementById('floor-row').style.display = isCottage ? 'none' : 'grid';
   document.getElementById('floors-in-house-field').style.display = isCottage ? 'block' : 'none';
   document.getElementById('building-material-field').style.display = isCottage ? 'none' : 'block';
   document.getElementById('cottage-material-field').style.display = isCottage ? 'block' : 'none';
   document.getElementById('banquet-hall-field').style.display = isCottage ? 'block' : 'none';
+
+  const titleInput = document.getElementById('title-input');
+  if (titleInput) {
+    titleInput.placeholder = isCottage
+      ? 'Например: Уютный коттедж с баней у озера'
+      : 'Например: Уютная квартира в центре';
+  }
 
   // Step 3 Characteristics
   document.getElementById('cottage-chars-section').style.display = isCottage ? 'block' : 'none';
@@ -1702,6 +1718,44 @@ function setupPreviewSync() {
       }
     });
   }
+
+  // Auto-calculate total beds when individual bed inputs change
+  const bedFieldIds = ['bed-single', 'bed-double-small', 'bed-double', 'bed-kingsize', 'bed-sofa', 'bed-armchair'];
+  const totalBedsInput = document.getElementById('total-beds');
+  function recalcTotalBeds() {
+    if (!totalBedsInput) return;
+    let sum = 0;
+    bedFieldIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sum += Math.max(0, parseInt(el.value) || 0);
+    });
+    if (sum > 0) {
+      totalBedsInput.value = sum;
+      clearFieldError(totalBedsInput);
+    }
+  }
+  bedFieldIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', recalcTotalBeds);
+      el.addEventListener('change', recalcTotalBeds);
+    }
+  });
+
+  // Balcony mutual exclusion between "none" and actual balcony types
+  const balconyCheckboxes = document.querySelectorAll('#balcony-container input[type="checkbox"]');
+  balconyCheckboxes.forEach(cb => {
+    cb.addEventListener('change', function() {
+      if (this.value === 'none' && this.checked) {
+        balconyCheckboxes.forEach(other => {
+          if (other.value !== 'none') other.checked = false;
+        });
+      } else if (this.value !== 'none' && this.checked) {
+        const noneCb = document.querySelector('#balcony-container input[value="none"]');
+        if (noneCb) noneCb.checked = false;
+      }
+    });
+  });
 }
 
 function toggleHoursInput() {
@@ -2220,6 +2274,11 @@ function nextStep() {
         markError(plotAreaInput, 'Укажите площадь участка');
       }
 
+      const roomsInput = document.getElementById('rooms-input');
+      if (!roomsInput.value.trim() || parseInt(roomsInput.value) <= 0) {
+        markError(roomsInput, 'Укажите количество комнат');
+      }
+
       const floorsInHouseInput = document.getElementById('floors-in-house-input');
       if (!floorsInHouseInput.value.trim() || parseInt(floorsInHouseInput.value) <= 0) {
         markError(floorsInHouseInput, 'Укажите этажность дома');
@@ -2324,14 +2383,14 @@ function nextStep() {
 
     const paymentMethods = document.querySelectorAll('input[name="payment_method"]:checked');
     if (paymentMethods.length === 0) {
-      showToast('⚠️ Выберите хотя бы один способ оплаты');
-      return;
+      const paymentContainer = document.getElementById('payment-methods-container');
+      markError(paymentContainer, 'Выберите хотя бы один способ оплаты');
     }
 
     if (firstErrorEl) {
       firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       if (typeof firstErrorEl.focus === 'function') firstErrorEl.focus();
-      showToast('⚠️ Укажите корректную стоимость');
+      showToast('⚠️ Заполните обязательные поля оплаты');
       return;
     }
   }

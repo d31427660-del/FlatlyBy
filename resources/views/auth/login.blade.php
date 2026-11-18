@@ -65,14 +65,35 @@
 /* Sliding Sections */
 .form-section {
   display: none;
-  animation: formFadeIn 0.3s ease-in-out forwards;
 }
 .form-section.active {
   display: block;
+  opacity: 1;
 }
-@keyframes formFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-input-wrap input {
+  padding-right: 44px;
+}
+.password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 6px;
+  color: var(--gray-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+.password-toggle-btn:hover {
+  color: var(--slate-900);
 }
 
 /* Form Styles */
@@ -282,7 +303,12 @@
         </div>
         <div class="form-field">
           <label for="login-password">Пароль</label>
-          <input type="password" id="login-password" name="password" autocomplete="current-password" required placeholder="Введите ваш пароль">
+          <div class="password-input-wrap">
+            <input type="password" id="login-password" name="password" autocomplete="current-password" required placeholder="Введите ваш пароль">
+            <button type="button" class="password-toggle-btn" aria-pressed="false" aria-label="Показать пароль" onclick="togglePasswordVisibility('login-password', this)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
         </div>
         <button type="submit" class="submit-btn">Войти в личный кабинет</button>
       </form>
@@ -301,7 +327,12 @@
         </div>
         <div class="form-field">
           <label for="reg-password">Пароль <span class="req">*</span></label>
-          <input type="password" id="reg-password" name="password" autocomplete="new-password" required placeholder="Минимум 4 символа">
+          <div class="password-input-wrap">
+            <input type="password" id="reg-password" name="password" autocomplete="new-password" minlength="6" required placeholder="Минимум 6 символов">
+            <button type="button" class="password-toggle-btn" aria-pressed="false" aria-label="Показать пароль" onclick="togglePasswordVisibility('reg-password', this)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
         </div>
         <div class="form-field">
           <label for="reg-phone">Номер телефона</label>
@@ -314,16 +345,16 @@
         <div class="form-field-row">
           <div class="form-field">
             <label for="reg-telegram">Telegram <span>(опц.)</span></label>
-            <input type="text" id="reg-telegram" name="telegram" autocomplete="off" placeholder="@username">
+            <input type="text" id="reg-telegram" name="telegram" autocorrect="off" autocapitalize="none" spellcheck="false" placeholder="@username">
           </div>
           <div class="form-field">
             <label for="reg-viber">Viber <span>(опц.)</span></label>
-            <input type="text" id="reg-viber" name="viber" autocomplete="off" placeholder="+375...">
+            <input type="text" id="reg-viber" name="viber" autocomplete="tel" placeholder="+375...">
           </div>
         </div>
         <div class="form-field">
           <label for="reg-unp">УНП (для ИП/Юрлиц/Самозанятых) <span>(опц.)</span></label>
-          <input type="text" id="reg-unp" name="unp" autocomplete="off" placeholder="9 символов (например, AB1234567)" maxlength="9">
+          <input type="text" id="reg-unp" name="unp" inputmode="numeric" pattern="\d{9}" placeholder="9 цифр (например, 193456789)" maxlength="9">
           <div class="hint">УНП автоматически подтверждает ваш статус арендодателя</div>
         </div>
         <button type="submit" class="submit-btn">Зарегистрироваться</button>
@@ -349,6 +380,16 @@
 
 @section('scripts')
 <script>
+// Toggle password visibility
+function togglePasswordVisibility(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const isPassword = input.type === 'password';
+  input.type = isPassword ? 'text' : 'password';
+  btn.setAttribute('aria-pressed', isPassword ? 'true' : 'false');
+  btn.setAttribute('aria-label', isPassword ? 'Скрыть пароль' : 'Показать пароль');
+}
+
 // Switch between Login and Registration tabs
 function switchTab(type) {
   document.querySelectorAll('.auth-tab').forEach(el => el.classList.remove('active'));
